@@ -19,5 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/', function (Request $request) {
-    return response()->json(["message" => "Bienvenue dans l'API dédiée à Baldur's Gate 3 de la machine virtuelle"], 200);
+    return response()->json(["message" => "Bienvenue dans l'API dédiée à Baldur's Gate 3"], 200);
 });
