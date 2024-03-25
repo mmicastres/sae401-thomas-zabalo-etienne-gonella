@@ -29,4 +29,4 @@ Route::get('/personnages', [PersonnagesController::class, 'listPersonnages']);
 
 Route::get('/personnages/{id}', [PersonnagesController::class, 'detailsPersonnage']);
 
-Route::get('/personnages/{id}', [PersonnagesController::class, 'detailsPersonnage']);
+Route::post('/personnages', [PersonnagesController::class, 'addPersonnage']);
