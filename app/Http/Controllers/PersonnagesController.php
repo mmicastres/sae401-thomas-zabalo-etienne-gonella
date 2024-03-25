@@ -19,3 +19,4 @@ class PersonnagesController extends Controller
         return response()->json([$personnage], 200);
     }
 }
+    
