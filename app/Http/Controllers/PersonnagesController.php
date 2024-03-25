@@ -10,14 +10,12 @@ class PersonnagesController extends Controller
     public function listPersonnages(Request $request)
     {
 
-        if ($request->has('search') && !empty($request->search)) {
-            if ($request->has('nom') && !empty($request->nom)){
-                $personnages = Personnages::where('nom', 'like', '%' . $request->search . '%')->get();
-                return response()->json($personnages);
-            }
-        } 
-        else {
-            $personnages = Personnages::orderby('id','desc')->get();
+
+        if ($request->has('nom') && !empty($request->nom)) {
+            $personnages = Personnages::where('nom', 'like', '%' . $request->search . '%')->get();
+            return response()->json($personnages);
+        } else {
+            $personnages = Personnages::orderby('id', 'desc')->get();
             return response()->json([$personnages], 200);
         }
     }
@@ -36,7 +34,7 @@ class PersonnagesController extends Controller
         $personnage->classe_id = $request->classe_id;
         $personnage->utilisateur_id = $request->utilisateur_id;
         $personnage->nom = $request->nom;
-        $idPersonnage = Personnages::count()+1;
+        $idPersonnage = Personnages::count() + 1;
         $personnage->id = $idPersonnage;
 
         $ok = $personnage->save();
@@ -48,7 +46,8 @@ class PersonnagesController extends Controller
         }
     }
 
-    public function deletePersonnage(Request $request, $id) {
+    public function deletePersonnage(Request $request, $id)
+    {
         $personnage = Personnages::find($id);
         if ($personnage) {
             $personnage->delete();
@@ -58,7 +57,8 @@ class PersonnagesController extends Controller
         }
     }
 
-    public function updatePersonnage(Request $request, $id) {
+    public function updatePersonnage(Request $request, $id)
+    {
         $personnage = Personnages::find($id);
         if ($personnage) {
             $personnage->race_id = $request->race_id;
@@ -71,7 +71,4 @@ class PersonnagesController extends Controller
             return response()->json(["status" => 0, "message" => "Ce produit n'existe pas"], 400);
         }
     }
-
-
 }
-    
