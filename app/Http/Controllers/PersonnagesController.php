@@ -12,8 +12,8 @@ class PersonnagesController extends Controller
 
 
         if ($request->has('nom') && !empty($request->nom)) {
-            $personnages = Personnages::where('nom', 'like', '%' . $request->search . '%')->get();
-            return response()->json("on fait la recherche");
+            $personnages = Personnages::where('nom', 'like', '%' . $request->nom . '%')->get();
+            return response()->json($personnages);
         } else {
             $personnages = Personnages::orderby('id', 'desc')->get();
             return response()->json([$personnages], 200);
