@@ -26,7 +26,7 @@ class PersonnagesController extends Controller
     public function detailsPersonnage(Request $request)
     {
         $personnage = Personnages::find($request->id);
-        return response()->json([$personnage], 200);
+        return response()->json($personnage, 200);
     }
 
     public function addPersonnage(Request $request)
