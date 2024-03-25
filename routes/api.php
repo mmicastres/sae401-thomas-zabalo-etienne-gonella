@@ -30,3 +30,9 @@ Route::get('/personnages', [PersonnagesController::class, 'listPersonnages']);
 Route::get('/personnages/{id}', [PersonnagesController::class, 'detailsPersonnage']);
 
 Route::post('/personnages', [PersonnagesController::class, 'addPersonnage']);
+
+Route::put('/personnages/{id}', [PersonnagesController::class, 'updatePersonnage']);
+
+Route::delete('/personnages/{id}', [PersonnagesController::class, 'deletePersonnage']);
+
+
