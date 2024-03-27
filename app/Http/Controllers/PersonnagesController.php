@@ -14,8 +14,8 @@ class PersonnagesController extends Controller
         if ($request->has('nom') && !empty($request->nom)) {
             $personnages = Personnages::where('nom', 'like', '%' . $request->nom . '%')->get();
             return response()->json($personnages, 200);
-        } elseif ($request->has('race') && !empty($request->race)) {
-            $personnages = Personnages::where('race', 'like', '%' . $request->race . '%')->get();
+        } elseif ($request->has('sous_race') && !empty($request->sous_race)) {
+            $personnages = Personnages::where('sous_race', 'like', '%' . $request->sous_race . '%')->get();
             return response()->json($personnages, 200);
         } else {
             $personnages = Personnages::orderby('id', 'desc')->get();
