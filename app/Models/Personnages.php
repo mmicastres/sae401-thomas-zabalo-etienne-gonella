@@ -9,7 +9,18 @@ class Personnages extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    public function origines(){
+    public function origines()
+    {
         return $this->belongsTo(Origines::class);
+    }
+
+    public function sousclasses()
+    {
+        return $this->belongsTo(Sousclasses::class);
+    }
+
+    public function classes()
+    {
+        return $this->belongsTo(Classes::class);    
     }
 }

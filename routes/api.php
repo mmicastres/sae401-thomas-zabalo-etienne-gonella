@@ -3,7 +3,8 @@
 use App\Http\Controllers\Classescontroller;
 use App\Http\Controllers\OriginesController;
 use App\Http\Controllers\PersonnagesController;
-use App\Models\Sous_classes;
+use App\Http\Controllers\Sousclassescontroller;
+use App\Models\Sousclasses;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -45,7 +46,7 @@ Route::get('/classes', [Classescontroller::class, 'listClasses']);
 
 // Les routes liées aux Sous_classes 
 
-Route::get('/sousclasses', [Sous_classes::class, 'listSous_classes']);
+Route::get('/sousclasses', [Sousclassescontroller::class, 'listSousclasses']);
 
 
 // Les routes liées aux Origines 

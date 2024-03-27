@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Classes extends Model
 {
     use HasFactory;
-    public function sous_classes(){
-        return $this->hasMany(Sous_classes::class);
+    public function sousclasses(){
+        return $this->hasMany(Sousclasses::class);
+    }
+
+    public function personnages(){
+        return $this->hasMany(Personnages::class);
     }
 }

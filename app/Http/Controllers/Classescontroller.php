@@ -15,7 +15,7 @@ class Classescontroller extends Controller
             $classes = Classes::where('nom', 'like', '%' . $request->nom . '%')->get();
             return response()->json($classes);
         } else {
-            $classes = Classes::with('Sous_classes')->orderby('id', 'desc')->get();
+            $classes = Classes::with(['sousclasses','personnages'])->orderby('id', 'desc')->get();
             return response()->json($classes, 200);
         }
     }
