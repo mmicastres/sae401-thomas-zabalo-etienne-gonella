@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Personnages;
+use App\Models\Sousclasses;
 
 class PersonnagesController extends Controller
 {
@@ -18,8 +19,8 @@ class PersonnagesController extends Controller
             $personnages = Personnages::where('race', 'like', '%' . $request->race . '%')->get();
             return response()->json($personnages, 200);
         }else {
-            $personnages = Personnages::with(['origines','sousclasses','classes'])->orderby('id', 'desc')->get();
-            return response()->json($personnages, 200);
+            $personnages = Personnages::with(['origines','sousclasses','sousclasses.classes'])->orderby('id', 'desc')->get();
+            return response()->json([$personnages], 200);
         }
     }
 
