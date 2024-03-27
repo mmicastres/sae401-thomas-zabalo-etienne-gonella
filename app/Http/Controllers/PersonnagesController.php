@@ -15,6 +15,7 @@ class PersonnagesController extends Controller
             $personnages = Personnages::where('nom', 'like', '%' . $request->nom . '%')->get();
             return response()->json($personnages, 200);
         } else {
+            var_dump($request);
             if ($request->has('sous_race') && !empty($request->sous_race)) {
                 $personnages = Personnages::where('sous_race', 'like', '%' . $request->sous_race . '%')->get();
                 return response()->json("banane", 200);
