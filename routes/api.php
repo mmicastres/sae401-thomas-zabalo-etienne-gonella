@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Classescontroller;
 use App\Http\Controllers\OriginesController;
 use App\Http\Controllers\PersonnagesController;
+use App\Models\Sous_classes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +38,16 @@ Route::put('/personnages/{id}', [PersonnagesController::class, 'updatePersonnage
 
 Route::delete('/personnages/{id}', [PersonnagesController::class, 'deletePersonnage']);
 
-// Les routes liées aux personnages 
+// Les routes liées aux Classes
+
+Route::get('/classes', [Classescontroller::class, 'listClasses']);
+
+
+// Les routes liées aux Sous_classes 
+
+Route::get('/sousclasses', [Sous_classes::class, 'listSous_classes']);
+
+
+// Les routes liées aux Origines 
 
 Route::get('/origines', [OriginesController::class, 'listOrigines']);

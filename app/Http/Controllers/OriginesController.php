@@ -17,8 +17,8 @@ class OriginesController extends Controller
             return response()->json($origines);
         }
         else {
-            $personnages = Origines::with('personnageso')->orderby('id', 'desc')->get();
-            return response()->json($personnages, 200);
+            $origines = Origines::with('personnages')->orderby('id', 'desc')->get();
+            return response()->json($origines, 200);
         }
     }
 }
