@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OriginesController;
 use App\Http\Controllers\PersonnagesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -35,4 +36,6 @@ Route::put('/personnages/{id}', [PersonnagesController::class, 'updatePersonnage
 
 Route::delete('/personnages/{id}', [PersonnagesController::class, 'deletePersonnage']);
 
+// Les routes liées aux personnages 
 
+Route::get('/origines', [OriginesController::class, 'listOrigines']);
