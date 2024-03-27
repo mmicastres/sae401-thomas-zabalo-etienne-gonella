@@ -18,7 +18,7 @@ class PersonnagesController extends Controller
             $personnages = Personnages::where('race', 'like', '%' . $request->race . '%')->get();
             return response()->json($personnages, 200);
         }else {
-            $personnages = Personnages::orderby('id', 'desc')->get();
+            $personnages = Personnages::with('origines')->orderby('id', 'desc')->get();
             return response()->json($personnages, 200);
         }
     }
