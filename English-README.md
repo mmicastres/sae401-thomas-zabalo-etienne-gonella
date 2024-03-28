@@ -7,329 +7,331 @@ GONELLA Etienne on ***Material Design***
 
 ## General description of the application
 
-Our application aims to facilitae the character creation for the video game Baldur's Gate 3 by allowing players to prepare their characters ahead. This preparation allows a better understanding of the use of spell and more strategic planning.
+Our application aims to facilitae the character creation for the video game Baldur's Gate 3 by allowing players to prepare their characters ahead. This preparation allows for a better understanding of the use of spell and more strategic planning.
 
-At the start of the adventure, players must create a character by selecting their race, subrace, class, subclass and origin. Each choice influences the character's skills and characteristics, which evolve over the 12 levels.
+At the start of the adventure, players must create a character by selecting their race, subrace, class, subclass and origin. Each choice influences the character's skills and characteristics, which evolve over 12 levels.
 
-Diving into the game without preparation can be risky, as the choices made come directly from the gameplay experience. Additionally, as players progress, they unlock new skills and sorts, frequently confronting them with difficult choices.
+Diving into the game without preparation can be risky, because the choices made affect directly the gameplay experience. Additionally, as players progress, they unlock new skills and sorts, frequently confronting them with difficult choices.
 
-The objective of our application is to anticipate these choices by offering a complete visualization of the skills available for each level of progression, determining the race and class chosen. This allows players to plan their progress throughout the adventure, maximizing efficiency and gameplay satisfaction.
+The goal of this app is to anticipate each level, each abilities or spell depending on the race and the class that are being chosen. This allows players to plan their progress throughout the adventure, maximizing efficiency and gameplay satisfaction.
 
 ## Features / Screens
-Inscription
+Sign Up
 > - Form allowing users to register
 > - Impose a secure password
 > - Encrypt passwords
 
-Report
+Sign In
 > - Connection form using email address and password
 > - Ability to remember the user
 
-Page d’accueil 
-> - (Présentation application) visible seulement sur le format desktop
-> - Création de mon personnage
-> - Visualisation trois derniers persos créés
+Home page 
+> - (Application presentation) visible only on desktop format
+> - Creation of my character
+> - Visualization of the last characters created
 
-Page profil
-> - Informations personnelles (possibilité de les modifier)
-> - Nom, prénom, photo
-> - Liste mes persos
-> - Option pour modifier un personnage déjà créer
+Profile page
+> - Personal information (possibility of modifying them)
+> - Name, first name, photo
+> - List "My characters"
+> - Can modify a character already created
 
-Page modification personnage
-> - Même page que la création de personnage, mais avec les éléments du personnage choisi précédemment
-> - Cette partie serait une *V++*
+Character modification page
+> - Same page as character creation, but with the elements of the character chosen previously
+> - This part would be a *V++*
 
-Page création de personnage 
-> - Choix de sa race, sa sous-race, sa classe, sa sous-classe et son origine
-> - Choix des sorts pour chacun des 12 niveaux
-> - Validation de la création de personnage
+Character creation page
+> - Choose your race, subrace, class, subclass and origin
+> - Choose your spells for each of the 12 levels
+> - Validation of character creation
 
-Page liste personnage communauté
-> - Liste des personnages crées
-> - Détails des personnages crées
+Community character list page
+> - List of characters created
+> - Details of the characters created
 
-Page personnage 
-> - Nom du personnage
-> - Détails de sa race, sa sous-race, sa classe, sa sous-classe et son origine
-> - Détails de tous les sorts qu'il a choisi pour chacun des niveaux
+Character page
+> - Character name
+> - Details of its race, subrace, class, subclass and origin
+> - Details of all the spells he chose for each level
 
 ### Navigation
-Dans notre application, nous avons opté pour l'intégration d'un menu visible afin de faciliter son utilisation pour les utilisateurs. Cette approche évite à l'utilisateur de devoir chercher comment accéder aux différentes fonctionnalités de l'application.
+In our application, we have opted for the integration of a visible menu in order to make it easier for users to use. This approach saves the user from having to figure out how to access the different features of the application.
 
-Le menu est composé de trois éléments clairement identifiables grâce à des icônes :
+The menu is made up of three elements that are clearly identifiable using icons:
 
-> - Un logo "profil", pour accéder à son espace personnel (ou Page Profil)
-> - Le logo du jeu, pour revenir à l'accueil
-> - Une icône en forme d'étoiles, pour accéder à la liste des personnages créer par l'utilisateur, avec en plus, les personnages "étranger" (c.a.d. créés par d'autres personnes mais modifiés par l'utilisateur)
+> - A “profile” logo, to access your personal space (or Profile Page)
+> - The game logo or a home logo, to return to the home page
+> - A star-shaped icon, to access the list of characters created by the user, plus "foreign" characters (i.e. created by other people but modified by the user)
 
-En plus du menu, l'application propose d'autres moyens de navigation, notamment des boutons comme "Voir plus" ou "Créer". De plus, une image de profil en haut à droite permet également d'accéder rapidement au profil utilisateur.
+In addition to the menu, the app offers other navigation options, including buttons like “See more” or “Create.” Additionally, a profile picture at the top right also provides quick access to the user profile.
 
-Ces différentes options de navigation ont été mises en place pour offrir une expérience conviviale et intuitive à l'utilisateur, lui permettant ainsi de naviguer facilement dans l'application et d'accéder rapidement aux fonctionnalités qu'il recherche.
+These different navigation options have been put in place to provide a friendly and intuitive experience to the user, allowing them to easily navigate in the application and quickly access the features they are looking for.
 
-## Accueil
+## Home
 
-Notre page d'accueil a été conçue de manière simple et intuitive, avec trois sections distinctes pour offrir une expérience enrichissante aux utilisateurs.
+Our homepage has been designed in a simple and intuitive way, with three distinct sections to provide an enriching experience for users.
 
-#### Création de personnages
-Dans cette première section, les utilisateurs ont la possibilité de démarrer leur aventure en créant leur propre personnage. Que vous soyez un débutant ou un joueur expérimenté, notre interface conviviale vous permettra de donner vie à votre personnage de rêve.
+#### Character creation
+In this first section, users have the opportunity to start their adventure by creating their own character. Whether you're a beginner or an experienced player, our user-friendly interface will allow you to bring your dream character to life.
 
-#### Personnages de la communauté
-La deuxième section est spécialement dédiée aux personnages de la communauté. Partagez vos créations avec d'autres utilisateurs et découvrez les personnages uniques créés par la communauté. Vous serez inspiré par la diversité et la créativité des personnages partagés ici.
+#### Community Characters
+The second section is specially dedicated to community characters. Share your creations with other users and discover unique characters created by the community. You will be inspired by the diversity and creativity of the characters shared here.
 
-#### Médias et réseaux sociaux (Qui n'est pas sur ce design système)
-Enfin, notre troisième section est une passerelle vers les médias et les réseaux sociaux. Restez à jour avec les dernières nouvelles et les annonces concernant le jeu. Explorez du contenu supplémentaire, découvrez des astuces et des guides, et restez connecté avec d'autres joueurs via nos réseaux sociaux.
+#### Media and social networks (Who is not on this system design)
+Finally, our third section is a gateway to media and social networks. Stay up to date with the latest news and announcements regarding the game. Explore additional content, discover tips and guides, and stay connected with other players through our social networks.
 
 
-### Ecran 1 / Page 1
+### Screen 1 / Page 1
 ![Frame 107](https://github.com/mmicastres/sae401-thomas-zabalo-etienne-gonella/assets/150163380/ad9a32ea-59bb-457c-ac00-520e6b73ce48)
 
-## Accueil
+## Home
 
-Sur la page d'accueil, nous avons plusieurs éléments comme :
-- Création de personnage : Vous pouvez créer votre propre personnage en utilisant notre interface conviviale. Personnalisez les traits, les compétences et l'apparence de votre personnage pour qu'il corresponde parfaitement à votre vision !
+On the homepage, we have several elements such as:
+- Character Creation: You can create your own character using our user-friendly interface. Customize your character's traits, skills, and appearance to perfectly match your vision!
 
-- Affichage des personnages de la communauté : Découvrez les personnages créés par d'autres utilisateurs de notre application. Explorez une variété de personnages uniques et inspirez-vous pour vos propres créations !
+- Community Character Display: Discover characters created by other users of our application. Explore a variety of unique characters and get inspired for your own creations!
 
-Nous avons conçu une interface utilisateur intuitive avec un slider sur la page d'accueil. La troisième diapositive est partiellement masquée pour encourager les utilisateurs à explorer davantage. Nous avons utilisé des couleurs contrastées telles que le noir, le gris opaque et le violet pour mettre en valeur les éléments cliquables et les boutons.
+We have designed an intuitive user interface with a slider on the homepage. The third slide is partially hidden to encourage users to explore further. We have used contrasting colors such as black, opaque gray, and purple to highlight clickable elements and buttons.
 
 
-### Ecran 2 / Page 2
+### Screen 2 / Page 2
 ![Frame 175](https://github.com/mmicastres/sae401-thomas-zabalo-etienne-gonella/assets/150163380/845a446b-73a1-4d7a-b63a-250d7387e7ca)
 
-## Connexion
+## Login
 
-Bienvenue sur notre page de connexion. Connectez-vous avec votre adresse e-mail et votre mot de passe et appuyez sur le bouton "Connexion" pour accéder à votre compte et à la création de personnage.
+Welcome to our login page. Log in with your email address and password and press the "Login" button to access your account and character creation.
 
-Les différents champs :
-> - Adresse e-mail
-> - Champ de mot de passe
-> - Bouton "Connexion"
-> - Bouton "Inscription"
+The different fields:
+> - Email Address
+> - Password Field
+> - "Login" Button
+> - "Sign Up" Button
 
-Après s'être connecté nous sommes redirigé vers la page d'accueil, nous avons désormais accés à la création de personnage ainsi qu'a la visualisation de son compte, dans lequel toute ses informations personnelles sont présentés.
+After logging in, we are redirected to the homepage, where we now have access to character creation and viewing our account, which presents all our personal information.
 
 
-### Ecran 3 / Page 3
+### Screen 3 / Page 3
 ![Frame 168](https://github.com/mmicastres/sae401-thomas-zabalo-etienne-gonella/assets/150163380/63b98bf7-e1a4-4531-97d3-c815ce8178b7)
 
-## Inscription
+## Sign Up
 
-Si vous n'avez pas encore de compte, vous pouvez en créer un facilement en cliquant sur le lien "Inscription" sur la page précédente. Vous serez dirigé vers une page d'inscription où vous pourrez fournir les informations nécessaires pour créer votre compte.
+If you don't have an account yet, you can easily create one by clicking on the "Sign Up" link on the previous page. You will be directed to a registration page where you can provide the necessary information to create your account.
 
-Les différents champs
-> - Nom d'utilisateur/Pseudo
-> - Adresse e-mail
-> - Champ de mot de passe
-> - Champ de confirmation du mot de passe
+The different fields:
+> - Username
+> - Email Address
+> - Password Field
+> - Confirm Password Field
 
 
-### Ecran 4 / Page 4
+### Screen 4 / Page 4
 ![Frame 196](https://github.com/mmicastres/sae401-thomas-zabalo-etienne-gonella/assets/150163380/c80cb2ee-bf8f-407d-ad14-239787cdd01d)
 
-#### Liste des personnages
+#### Character List
 
-Sur cette interface on retrouve le même système de "Cards" dans lequel est représenté les personnages de la communauté. Ces personnes sont caractérisés par son "Nom", sa "Race" ainsi que sa "Classe". On retrouve par la suite un bouton en amont qui permet de voir les details spécifique du personnages
+This interface features the same "Cards" system showcasing community characters. These individuals are characterized by their "Name," "Race," and "Class." There is also a button that allows viewing specific character details.
 
 
-### Ecran 5 / Page 5
+### Screen 5 / Page 5
 ![Frame 109 (1)](https://github.com/mmicastres/sae401-thomas-zabalo-etienne-gonella/assets/150163380/8baf02a9-ec48-449a-8a92-7fe11e1bf7e9)
 
-## Création de personnage
+## Character Creation
 
-Choix de la race : L'utilisateur commence par choisir la race de votre personnage parmi les onze options disponibles. Chaque race possède des descriptions détaillées et des caractéristiques uniques, y compris :
+Race Selection: The user starts by choosing the race of their character from the eleven available options. Each race has detailed descriptions and unique characteristics, including:
 
-> - Distance d'attaque : Cette caractéristique indique la portée d'attaque préférée de la race, qu'il s'agisse du combat rapproché, à distance ou des deux.
-> - Compétences : Chaque race est dotée de compétences particulières qui lui confèrent des avantages uniques dans différentes situations.
+> - Attack Range: This characteristic indicates the preferred attack range of the race, whether it's melee, ranged, or both.
+> - Skills: Each race has special skills that provide unique advantages in different situations.
 
-Une fois que le choix de l'utilisateur a été fait, il pourra passer à l'étape suivante de la création du personnage. 
+Once the user's choice is made, they can proceed to the next step of character creation.
 
-## Justification du choix 
-La mise en place de "Cards" pour la sélection d'un personnage présente de nombreux avantages. Visuellement attrayantes, les "Cards" permettent une présentation claire et concise de toutes les options des personnages disponibles, facilitant ainsi la comparaison et la prise de décision pour les utilisateurs. Leur interactivité permet également aux utilisateurs d'explorer chaque option en détail, et cela nous permettra de le développer plus facielement. En combinant visibilité et facilité d'utilisation, les "Cards" offrent une meilleure expérience utilisateur pour la sélection d'un personnage.
+## Justification for the Choice 
+Implementing "Cards" for character selection has numerous advantages. Visually appealing, the "Cards" provide a clear and concise presentation of all available character options, making it easier for users to compare and decide. Their interactivity also allows users to explore each option in detail, aiding in further development. By combining visibility and ease of use, "Cards" offer a better user experience for character selection.
 
 
-### Ecran 6 / Page 6
+### Screen 6 / Page 6
 ![Frame 126](https://github.com/mmicastres/sae401-thomas-zabalo-etienne-gonella/assets/150163380/80e184ec-d7bd-48fd-a82c-ec5d9643796a)
 
-## Création de personnage
+## Character Creation
 
-#### Choix de la sous-race
-Certaines races proposent différentes sous-races, mais pas toutes, chacune des races qui proposent une sous-race à ses propres caractéristiques et compétences spécifiques. Ces sous-races offrent des options de personnalisation supplémentaires pour affiner votre personnage selon vos préférences de jeu.
+#### Sub-Race Selection
+Some races offer different sub-races, each with its own specific characteristics and skills. These sub-races provide additional customization options to refine your character according to your gameplay preferences.
 
-#### Description et caractéristiques des sous-races
-Chaque sous-race est accompagnée d'une description détaillée de ses origines et de ses caractéristiques distinctives. Cela permettra à l'utilisateur de découvrir les traits uniques de chaque sous-race, notamment leur distance d'attaque, leurs compétences de sous-classe et d'autres particularités qui les différencient les unes des autres.
+#### Description and Characteristics of Sub-Races
+Each sub-race comes with a detailed description of its origins and distinctive characteristics. This allows the user to discover the unique traits of each sub-race, including their attack range, subclass skills, and other distinguishing features.
 
-## Justification du choix 
-Nous avons mis en place le même système de "Cards" pour ranger nos sous-races.
+## Justification for the Choice 
+We have implemented the same "Cards" system for organizing our sub-races.
 
 
-### Ecran 7 / Page 7
+### Screen 7 / Page 7
 ![Frame 128](https://github.com/mmicastres/sae401-thomas-zabalo-etienne-gonella/assets/150163380/e91e5f5a-8059-4fba-a6a4-10cae40574af)
 
-## Création de personnage
+## Character Creation
 
-Lorsque que l'utilisateur choisi une sous-race, il aura également l'opportunité de sélectionner un sort mineur ou majeur selon la sous-race qu'il choisit. Chacun de ces sorts offre des avantages uniques pour affiner les compétences du personnage.
+When the user chooses a sub-race, they will also have the opportunity to select a minor or major spell based on the sub-race they choose. Each of these spells offers unique benefits to enhance the character's skills.
 
-Choix du sort mineur
-Certaines sous-races proposent une sélection de sorts mineurs parmi lesquels l'utilisateur peut choisir. Ces sorts mineurs offrent des effets variés, allant de compétences offensives à des capacités de soutien ou de défense.
+Minor Spell Selection
+Some sub-races offer a selection of minor spells from which the user can choose. These minor spells offer various effects, ranging from offensive skills to support or defensive abilities.
 
-#### Caractéristiques des sorts mineurs
-Les sorts mineurs sont accompagnés de descriptions détaillées de leurs caractéristiques, notamment leur distance d'attaque, leur portée, leur puissance et d'autres aspects spécifiques. Il arrive aussi que l'utilisateur puisse choisir plusieurs sorts tout dépendra encore une fois de sa race et de sa classe.
+#### Characteristics of Minor Spells
+Minor spells are accompanied by detailed descriptions of their characteristics, including their attack range, range, power, and other specific aspects. It may also be possible for the user to choose multiple spells depending once again on their race and class.
 
-## Justification du choix 
-Nous avons mis en place le même système de "Cards" pour ranger nos sorts.
+## Justification for the Choice 
+We have implemented the same "Cards" system for organizing our spells.
 
 
-### Ecran 8 / Page 8
+### Screen 8 / Page 8
 ![Frame 152](https://github.com/mmicastres/sae401-thomas-zabalo-etienne-gonella/assets/150163380/9d490d15-852d-4b85-b694-5244011da4af)
 
-## Création de personnage
+## Character Creation
 
-Après que l'utilisateur ait choisi sa race et sa sous-race, il est temps de définir la voie que le personnage empruntera en sélectionnant sa classe parmi douze options uniques.
+After the user has chosen their race and sub-race, it's time to define the path the character will take by selecting their class from twelve unique options.
 
-#### Choix de la classe
-Il existe douze classes différentes parmi lesquelles l'utilisateur pourra choisir. Chaque classe offre un style de jeu différent, des caractéristiques uniques et des compétences spéciales. 
+#### Class Selection
+There are twelve different classes to choose from. Each class offers a different playstyle, unique characteristics, and special skills.
 
-#### Description et caractéristiques des classes
-Chaque classe est accompagnée d'une description détaillée de ses origines, de ses compétences spéciales et de ses habilités principales qui donne des avantages dans certaines situations.
+#### Description and Characteristics of Classes
+Each class comes with a detailed description of its origins, special skills, and main abilities that provide advantages in certain situations.
 
-## Justification du choix 
-Nous avons mis en place le même système de "Cards" pour ranger nos classes.
+## Justification for the Choice 
+We have implemented the same "Cards" system for organizing our classes.
 
 
-### Ecran 9 / Page 9
+### Screen 9 / Page 9
 ![Frame 177](https://github.com/mmicastres/sae401-thomas-zabalo-etienne-gonella/assets/150163380/71985467-ca0d-4c70-907d-2c45660b62c4)
 
-## Création de personnage
+## Character Creation
 
-Lors de la création du personnage, l'utilisateur devra choisir son origine qui influencera grandement le jeu. L'origine du personnage est en quelque sorte histoire personnelle.
+During character creation, the user will choose their origin, which will greatly influence the game. The character's origin is somewhat of a personal history.
 
-#### Amélioration des habiletés
-Chaque origine confère au personnage des habiletés spécifiques qui correspondent à son histoire et à son passé. Ces habiletés peuvent être utilisées pour résoudre des énigmes, influencer les dialogues ou réussir des actions spécifiques tout au long de votre aventure.
-
-#### Bonus sur certaines actions
-En plus des habiletés spécifiques, chaque origine offre également des bonus sur les habilités principales, ce qui donne un avantage dans certaines situations. 
-
-## Justification du choix 
-Nous avons mis en place le même système de "Cards" pour ranger nos origines.
+#### Skill Enhancements
 
 
-### Ecran 10 / Page 10
+Each origin grants the character specific skills that correspond to their story and background. These skills can be used to solve puzzles, influence dialogues, or succeed in specific actions throughout your adventure.
+
+#### Bonuses on Certain Actions
+In addition to specific skills, each origin also offers bonuses on main abilities, providing an advantage in certain situations.
+
+## Justification for the Choice 
+We have implemented the same "Cards" system for organizing our origins.
+
+
+### Screen 10 / Page 10
 ![Frame 162](https://github.com/mmicastres/sae401-thomas-zabalo-etienne-gonella/assets/150163380/f987bbb5-a197-41e3-9801-11a9623792a6)
 
-## Création de personnage
+## Character Creation
 
-#### Choix de compétences/sorts
-L'utilisateur aura la possibilité de choisir parmi une sélection de compétences et de sorts. Ces choix détermineront les capacités et les talents du personnage, lui permettant de s'adapter à différentes situations et styles de jeu.
+#### Skills/Spells Selection
+The user will have the option to choose from a selection of skills and spells. These choices will determine the character's abilities and talents, allowing them to adapt to different situations and playstyles.
 
-#### Passifs tout au long des 12 niveaux
-Tout au long de la progression, son personnage bénéficiera de passifs spéciaux qui lui conféreront des avantages supplémentaires. Ces passifs peuvent améliorer ses capacités de combat, sa résistance aux dégâts, ou lui offrir des compétences spéciales uniques.
+#### Passive Abilities Throughout 12 Levels
+Throughout progression, the character will benefit from special passives that grant additional advantages. These passives can enhance combat abilities, damage resistance, or offer unique special skills.
 
-## Justification du choix 
-Nous avons choisi d'utiliser une liste déroulante avec plusieurs éléments visibles pour offrir une expérience utilisateur plus intuitive. Cette approche permet aux utilisateurs de voir immédiatement une partie des options disponibles sans avoir besoin de dérouler complètement la liste.
+## Justification for the Choice 
+We chose to use a dropdown list with several visible elements to offer a more intuitive user experience. This approach allows users to immediately see some of the available options without needing to fully expand the list.
 
-En affichant plusieurs éléments de la liste déroulante, nous facilitons la navigation et la sélection des options pour les utilisateurs. Cela leur permet de parcourir rapidement les choix disponibles et de sélectionner celui qui correspond le mieux à leurs besoins sans avoir à parcourir une longue liste.
+By displaying multiple items from the dropdown list, we facilitate navigation and selection of options for users. This allows them to quickly browse through available choices and select the one that best suits their needs without having to scroll through a long list.
 
-Cette approche est particulièrement utile lorsque la liste contient un nombre limité d'options et que les utilisateurs peuvent facilement visualiser toutes les possibilités sans être submergés par une liste déroulante trop longue.
+This approach is particularly useful when the list contains a limited number of options and users can easily visualize all possibilities without being overwhelmed by a too long dropdown list.
 
-Enfin, nous offrons à l'utilisateur la possibilité de donner un nom au personnage qu'il va créer.
+Finally, we offer the user the opportunity to name the character they are creating.
 
 
-### Ecran 11 / Page 11
+### Screen 11 / Page 11
 ![Frame 161](https://github.com/mmicastres/sae401-thomas-zabalo-etienne-gonella/assets/150163380/05df0333-464e-4ff3-9c0a-71a8092d9dad)
 
-## Création de personnage
-Voici un aperçu de ce qui pourrait apparaître sous l'un des niveaux. Cet aperçu varie en fonction de la classe choisie ainsi que de la race du personnage.
+## Character Creation
+Here's a preview of what might appear under one of the levels. This preview varies depending on the chosen class and race of the character.
 
-### Justification pour la création de personnage interface 
-Meme justification que celle juste en aval
+### Justification for Character Creation Interface 
+Same justification as the one just below
 
 
-### Ecran 12 / Page 12
+### Screen 12 / Page 12
 ![Frame 176](https://github.com/mmicastres/sae401-thomas-zabalo-etienne-gonella/assets/150163380/443a8f96-3fa3-43a1-9f8e-0dd951a2891f)
 
-## Liste des personnages de la communauté
+## Community Character List
 
-### Utilisation des cards pour représenter les personnages de la communauté
-Les cards sont un moyen efficace de présenter visuellement les informations sur chaque personnage de la communauté. En utilisant des cards, nous offrons une présentation uniforme et organisée des différents personnages, ce qui facilite la comparaison et la sélection pour les utilisateurs. Chaque cards affiche de manière concise et claire le nom du personnage, sa race et sa classe, fournissant ainsi les informations essentielles pour aider les utilisateurs à choisir quel personnage veulent, ils voir.
+### Use of Cards to Represent Community Characters
+Cards are an effective way to visually present information about each community character. By using cards, we provide a consistent and organized presentation of the different characters, making it easier for users to compare and select. Each card concisely and clearly displays the character's name, race, and class, providing essential information to help users decide which character they want to view.
 
 
 ## Justification
-### Choix des couleurs pour les boutons et le fond des cards
-Nous avons choisi d'utiliser des boutons détaillés en violet et un fond noir pour les cards afin de créer un contraste visuel saisissant et attrayant. Le violet est une couleur souvent associée à la royauté, à la créativité et à l'originalité, ce qui renforce l'idée de personnages uniques et extraordinaires au sein de notre communauté. De plus, le fond noir offre un contraste fort qui met en valeur les éléments de la cards, attirant ainsi l'attention de l'utilisateur sur les informations importantes.
+### Button and Card Background Color Choices
+We chose to use detailed purple buttons and a black background for the cards to create a striking and appealing visual contrast. Purple is a color often associated with royalty, creativity, and originality, reinforcing the idea of unique and extraordinary characters within our community. Additionally, the black background offers a strong contrast that highlights the elements of the card, thus drawing the user's attention to important information.
 
 
-### Ecran 13 / Page 13
+### Screen 13 / Page 13
 ![Frame 169](https://github.com/mmicastres/sae401-thomas-zabalo-etienne-gonella/assets/150163380/8a4fe3ab-0e85-44a9-a4d7-d30a04b6e858)
 
-## Profil
+## Profile
 
-### Compte utilisateur
-Dans votre compte utilisateur, vous pouvez accéder à vos informations personnelles ainsi qu'à la gestion de votre profil.
+### User Account
+In your user account, you can access your personal information as well as manage your profile.
 
-> - Photo de profil : Une photo que vous avez choisie pour représenter votre compte.
-> - Adresse e-mail : Votre adresse e-mail utilisée pour vous connecter à votre compte.
-> - Pseudo : Votre pseudonyme ou nom d'utilisateur.
-> - Mot de passe : Votre mot de passe sécurisé.
-> - Nombre de personnages créés : Le nombre total de personnages que vous avez déjà créés.
+> - Profile Picture: A photo you have chosen to represent your account.
+> - Email Address: Your email address used to log in to your account.
+> - Username: Your nickname or username.
+> - Password: Your secure password.
+> - Number of Characters Created: The total number of characters you have already created.
 
-Le bouton "Modifier" est disponible pour vous permettre de mettre à jour vos informations personnelles à tout moment.
+The "Edit" button is available to allow you to update your personal information at any time.
 
 ## Justification 
-Le design de cette interface est simple, clair et épuré, comme le reste de l'application, afin de garantir une expérience utilisateur fluide et intuitive.
+The design of this interface is simple, clear, and clean, like the rest of the application, to ensure a smooth and intuitive user experience.
 
-### Ecran 14 / Page 14
+### Screen 14 / Page 14
 ![Frame 171](https://github.com/mmicastres/sae401-thomas-zabalo-etienne-gonella/assets/150163380/c7080e76-5b7a-40ff-9e96-8a61648bc878)
 
-## Modification profil
+## Profile Modification
 
-### Compte utilisateur
-Lorsque l'utilisateur veut modifier son compte il a cliquer sur modifier. A partir du moment ou il a cliquer sur le bouton il peut modifier
+### User Account
+When the user wants to modify their account, they have to click on "Edit". From the moment they click the button, they can modify
 
-> - Photo de profil : Une photo que vous avez choisie pour représenter votre compte.
-> - Adresse e-mail : Votre adresse e-mail utilisée pour vous connecter à votre compte.
-> - Pseudo : Votre pseudonyme ou nom d'utilisateur.
-> - Mot de passe : Votre mot de passe sécurisé.
-> - Confirmation du Mot de passe : Validation du nouveau mot de passe sécurisé
-> - Nombre de personnages créés : Le nombre total de personnages que vous avez déjà créés.
+> - Profile Picture: A photo you have chosen to represent your account.
+> - Email Address: Your email address used to log in to your account.
+> - Username: Your nickname or username.
+> - Password: Your secure password.
+> - Confirm Password: Validation of the new secure password
+> - Number of Characters Created: The total number of characters you have already created.
 
-Le bouton "Modifier" permet de valider les mises à jour du profil sur les informations personnelles de l'utilisateur.
+The "Edit" button allows validating profile updates on the user's personal information.
 
 ## Justification 
-Même explicaiton que celle en aval
+Same explanation as the one below
 
 
-### Ecran 15 / Page 15
+### Screen 15 / Page 15
 ![image](https://github.com/mmicastres/sae401-thomas-zabalo-etienne-gonella/assets/150163380/5b0a4b86-04d4-49b4-bc31-399f70f57cd4)
 
-## Modification profil photo
+## Profile Picture Modification
 
-### Photo Utilisateur
-Lorsque vous cliquez sur votre photo de profil, un modal apparaît proposant différentes images représentant les personnages que l'on croise dans le jeu. En sélectionnant l'une des images, votre photo de profil se met automatiquement à jour.
+### User Photo
+When you click on your profile picture, a modal appears offering different images representing characters encountered in the game. By selecting one of the images, your profile picture is automatically updated.
 
 ## Justification 
-Même explicaiton que celle en aval
+Same explanation as the one below
 
 
-## Différence entre web et mobile 
+## Difference Between Web and Mobile 
 
-### Conception cohérente sur tous les appareils
-Nous avons choisi de maintenir une conception cohérente sur tous les appareils, que ce soit sur desktop ou mobile, afin d'offrir une expérience utilisateur fluide et intuitive. Cette cohérence visuelle permet aux utilisateurs de naviguer facilement d'un appareil à l'autre sans perdre leurs repères.
+### Consistent Design Across All Devices
+We have chosen to maintain a consistent design across all devices, whether on desktop or mobile, to provide a smooth and intuitive user experience. This visual consistency allows users to easily navigate from one device to another without losing their bearings.
 
-### Fonctionnalités spécifiques à la version desktop
-Bien que la conception reste la même, la version desktop de notre application propose une fonctionnalité supplémentaire : la partie admin. Nous avons décidé d'intégrer cette fonctionnalité uniquement sur la version desktop car nous estimons qu'elle sera plus accessible et plus pratique pour les administrateurs de l'application.
+### Desktop-Specific Features
+While the design remains the same, the desktop version of our application offers an additional feature: the admin panel. We decided to integrate this feature only on the desktop version as we believe it will be more accessible and convenient for application administrators.
 
-### Avantages de la cohérence visuelle
-Maintenir le même design sur les deux plateformes permet aux utilisateurs de se repérer facilement, quel que soit l'appareil qu'ils utilisent. Cela garantit une expérience utilisateur uniforme et confortable, tout en offrant des fonctionnalités spécifiques là où elles sont le plus utiles.
+### Benefits of Visual Consistency
+Maintaining the same design on both platforms allows users to easily navigate, regardless of the device they are using. This ensures a consistent and comfortable user experience, while offering specific features where they are most useful.
 
 
-## Maquettes finales
-Nous avons décider de choisir le Design System d'Etienne "Matérial Design" car nous avons trouvé que ce DS etait plus accessible et plus facile d'utilisation, d'autant plus que contrairement à celui d'Apple on retrouve plus de composant et plus de cadre pour réaliser la maquette, on aura donc une structure plus stable et plus adapté dans le développement web et mobile.
+## Final Mockups
+We have decided to choose Etienne's "Material Design" Design System because we found that this DS was more accessible and easier to use, especially since unlike Apple's, it offers more components and more frames to create the mockup. Therefore, we will have a more stable and suitable structure for web and mobile development.
 
-***Liens vers les maquettes***
+***Links to the mockups***
 
-#Desktop et Mobile Thomas
+#Desktop and Mobile Thomas
 https://www.figma.com/file/YuhwJtUTLoiZkc7srXcJpB/Application-avec-Apple-Design?type=design&node-id=1402%3A11502&mode=design&t=MpEsNFvRpGPDrXTf-1
 
-#Desktop et Mobile Etienne
+#Desktop and Mobile Etienne
 https://www.figma.com/file/fa4tjoYDCjhy48dcc1ZzH1/Material-3-Design-Kit-(Community)?type=design&mode=design&t=SyHPt0BHXMEqN32g-0
