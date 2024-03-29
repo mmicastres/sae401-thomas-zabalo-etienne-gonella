@@ -18,4 +18,10 @@ class SousclassesController extends Controller
             return response()->json($sousclasses, 200);
         }
     }
+
+    public function detailsSousClasse(Request $request)
+    {
+        $sousclasse = Sousclasses::where("id", "=", $request->id)->get();
+        return response()->json($sousclasse, 200);
+    }
 }

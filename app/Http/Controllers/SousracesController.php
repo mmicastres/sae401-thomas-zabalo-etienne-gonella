@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class SousracesController extends Controller
 {
-    public function listSousclasses(Request $request)
+    public function listSousraces(Request $request)
     {
 
         if ($request->has('nom') && !empty($request->nom)) {
@@ -17,5 +17,11 @@ class SousracesController extends Controller
             $sousraces = Sousraces::with('races')->orderby('id', 'desc')->get();
             return response()->json($sousraces, 200);
         }
+    }
+
+    public function detailsSousRace(Request $request)
+    {
+        $sousrace = Sousraces::where("id", "=", $request->id)->get();
+        return response()->json($sousrace, 200);
     }
 }

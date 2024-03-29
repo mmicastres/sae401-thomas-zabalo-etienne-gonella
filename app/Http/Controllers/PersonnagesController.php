@@ -15,18 +15,15 @@ class PersonnagesController extends Controller
         if ($request->has('nom') && !empty($request->nom)) {
             $personnages = Personnages::where('nom', 'like', '%' . $request->nom . '%')->get();
             return response()->json($personnages);
-        } elseif ($request->has('race') && !empty($request->race)) {    
-            $personnages = Personnages::where('race', 'like', '%' . $request->race . '%')->get();
-            return response()->json($personnages, 200);
-        }else {
-            $personnages = Personnages::with('origines','sousclasses','sousclasses.classes')->orderby('id', 'desc')->get();
+        } else {
+            $personnages = Personnages::with('origines','sousclasses','sousclasses.classes','sousraces','sousraces.races')->orderby('id', 'desc')->get();
             return response()->json($personnages, 200);
         }
     }
 
     public function detailsPersonnage(Request $request)
     {
-        $personnage = Personnages::find($request->id)->with('origines','sousclasses','sousclasses.classes')->get();
+        $personnage = Personnages::where("id","=",$request->id)->with('origines','sousclasses','sousclasses.classes','sousraces','sousraces.races')->get();
         return response()->json($personnage, 200);
     }
 
@@ -46,7 +43,7 @@ class PersonnagesController extends Controller
             return response()->json(["status" => 1, "message" => "Personnage ajouté dans la bd"], 201);
         } else {
             return response()->json(["status" => 0, "message" => "pb lors de
-       l'ajout"], 400);
+       l'ajout du personnage"], 400);
         }
     }
 
@@ -55,7 +52,7 @@ class PersonnagesController extends Controller
         $personnage = Personnages::find($id);
         if ($personnage) {
             $personnage->delete();
-            return response()->json(["status" => 1, "message" => "Objet supprimé de la bd"], 201);
+            return response()->json(["status" => 1, "message" => "Personnage supprimé de la bd"], 201);
         } else {
             return response()->json(["status" => 0, "message" => "Le personnage n'existe pas"], 400);
         }
@@ -70,9 +67,9 @@ class PersonnagesController extends Controller
             $personnage->classe_id = $request->classe_id;
             $personnage->nom = $request->nom;
             $personnage->save();
-            return response()->json(["status" => 1, "message" => "Objet modifié"], 201);
+            return response()->json(["status" => 1, "message" => "personnage modifié"], 201);
         } else {
-            return response()->json(["status" => 0, "message" => "Ce produit n'existe pas"], 400);
+            return response()->json(["status" => 0, "message" => "Ce personnage n'existe pas"], 400);
         }
     }
 }
