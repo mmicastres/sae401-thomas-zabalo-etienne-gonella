@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Sousraces extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+
     public function races(){
         return $this->belongsTo(Races::class);
     }

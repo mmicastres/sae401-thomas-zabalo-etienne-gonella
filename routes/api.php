@@ -72,6 +72,6 @@ Route::delete('/sousraces/{id}', [SousracesController::class, 'deleteSousRace'])
 
 Route::get('/origines', [OriginesController::class, 'listOrigines']);
 Route::get('/origines/{id}', [OriginesController::class, 'detailsOrigine']);
-Route::post('/origines', [OriginesController::class, 'addSousOrigine']);
+Route::post('/origines', [OriginesController::class, 'addOrigine']);
 Route::put('/origines/{id}', [OriginesController::class, 'updateOrigine']);
 Route::delete('/origines/{id}', [OriginesController::class, 'deleteOrigine']);

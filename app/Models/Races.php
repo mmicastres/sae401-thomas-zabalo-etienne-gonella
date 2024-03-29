@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Races extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+
     public function sousraces(){
         return $this->hasMany(Sousraces::class);
     }

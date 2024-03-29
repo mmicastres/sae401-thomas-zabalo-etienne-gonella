@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Classes extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+
     public function sousclasses(){
         return $this->hasMany(Sousclasses::class);
     }

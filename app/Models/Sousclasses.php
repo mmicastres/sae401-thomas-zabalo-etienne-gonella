@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Sousclasses extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+
     public function classes(){
         return $this->belongsTo(Classes::class);
     }

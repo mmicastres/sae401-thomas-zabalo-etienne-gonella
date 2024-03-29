@@ -34,4 +34,9 @@ class Personnages extends Model
     {
         return $this->belongsTo(Races::class);    
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);    
+    }
 }

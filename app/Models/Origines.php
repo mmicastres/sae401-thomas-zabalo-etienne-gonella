@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Origines extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+
     public function personnages(){
         return $this->hasMany(Personnages::class);
     }
