@@ -30,10 +30,10 @@ class PersonnagesController extends Controller
     public function addPersonnage(Request $request)
     {
         $personnage = new Personnages;
-        $personnage->race_id = $request->race_id;
+        $personnage->sousraces_id = $request->sousraces_id;
         $personnage->origine_id = $request->origine_id;
-        $personnage->classe_id = $request->classe_id;
-        $personnage->utilisateur_id = $request->utilisateur_id;
+        $personnage->sousclasses_id = $request->sousclasses_id;
+        $personnage->user_id = $request->user_id;
         $personnage->nom = $request->nom;
         $idPersonnage = Personnages::count() + 1;
         $personnage->id = $idPersonnage;
