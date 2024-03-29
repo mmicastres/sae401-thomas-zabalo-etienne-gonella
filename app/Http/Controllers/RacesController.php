@@ -14,8 +14,8 @@ class Racescontroller extends Controller
             $races = Races::where('nom', 'like', '%' . $request->nom . '%')->get();
             return response()->json($races);
         } else {
-            $classes = Races::with('sousraces','personnages')->orderby('id', 'desc')->get();
-            return response()->json($classes, 200);
+            $races = Races::with('sousraces', 'personnages')->orderby('id', 'desc')->get();
+            return response()->json($races, 200);
         }
     }
 }

@@ -24,4 +24,14 @@ class Personnages extends Model
     {
         return $this->belongsTo(Classes::class);    
     }
+
+    public function sousraces()
+    {
+        return $this->belongsTo(Sousraces::class);
+    }
+
+    public function races()
+    {
+        return $this->belongsTo(Races::class);    
+    }
 }
