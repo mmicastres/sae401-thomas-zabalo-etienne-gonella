@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Classescontroller;
+use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\OriginesController;
 use App\Http\Controllers\PersonnagesController;
-use App\Http\Controllers\Sousclassescontroller;
-use App\Models\Sousclasses;
+use App\Http\Controllers\Racescontroller;
+use App\Http\Controllers\SousclassesController;
+use App\Http\Controllers\SousracesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -41,13 +42,22 @@ Route::delete('/personnages/{id}', [PersonnagesController::class, 'deletePersonn
 
 // Les routes liées aux Classes
 
-Route::get('/classes', [Classescontroller::class, 'listClasses']);
+Route::get('/classes', [ClassesController::class, 'listClasses']);
 
 
-// Les routes liées aux Sous_classes 
+// Les routes liées aux Sousclasses 
 
-Route::get('/sousclasses', [Sousclassescontroller::class, 'listSousclasses']);
+Route::get('/sousclasses', [SousclassesController::class, 'listSousclasses']);
 
+
+// Les routes liées aux Races
+
+Route::get('/races', [RacesController::class, 'listRaces']);
+
+
+// Les routes liées aux Sousraces 
+
+Route::get('/sousraces', [SousracesController::class, 'listSousraces']);
 
 // Les routes liées aux Origines 
 

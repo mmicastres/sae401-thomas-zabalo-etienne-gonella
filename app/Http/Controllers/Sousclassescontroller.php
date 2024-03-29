@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Sousclasses;
 use Illuminate\Http\Request;
 
-class Sousclassescontroller extends Controller
+class SousclassesController extends Controller
 {
     public function listSousclasses(Request $request)
     {

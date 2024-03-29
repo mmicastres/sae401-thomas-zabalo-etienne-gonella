@@ -19,14 +19,14 @@ class PersonnagesController extends Controller
             $personnages = Personnages::where('race', 'like', '%' . $request->race . '%')->get();
             return response()->json($personnages, 200);
         }else {
-            $personnages = Personnages::with(['origines','sousclasses','sousclasses.classes'])->orderby('id', 'desc')->get();
-            return response()->json([$personnages], 200);
+            $personnages = Personnages::with('origines','sousclasses','sousclasses.classes')->orderby('id', 'desc')->get();
+            return response()->json($personnages, 200);
         }
     }
 
     public function detailsPersonnage(Request $request)
     {
-        $personnage = Personnages::find($request->id);
+        $personnage = Personnages::find($request->id)->with('origines','sousclasses','sousclasses.classes')->get();
         return response()->json($personnage, 200);
     }
 
