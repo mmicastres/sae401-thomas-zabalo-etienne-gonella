@@ -57,7 +57,7 @@ Route::post('/login', function (LoginRequest $request) {
 
 // Les routes liées aux Users 
 
-Route::middleware('auth:sanctum')->get('/users', [UserController::class, 'listUsers']);
+Route::get('/users', [UserController::class, 'listUsers']);
 Route::get('/users/{id}', [UserController::class, 'detailsUser']);
 Route::post('/users', [UserController::class, 'addUser']);
 Route::put('/users/{id}', [UserController::class, 'updateUser']);
