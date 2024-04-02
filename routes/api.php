@@ -8,7 +8,7 @@ use App\Http\Controllers\SousclassesController;
 use App\Http\Controllers\SousracesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,6 +28,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/', function (Request $request) {
     return response()->json(["Bienvenue dans l'API dédiée à Baldur's Gate 3 de la machine virtuelle, ceci est un test"], 200);
 });
+
+// Les routes liées aux Users 
+
+Route::get('/users', [UserController::class, 'listUsers']);
+Route::get('/users/{id}', [UserController::class, 'detailsUser']);
+Route::post('/users', [UserController::class, 'addUser']);
+Route::put('/users/{id}', [UserController::class, 'updateUser']);
+Route::delete('/users/{id}', [UserController::class, 'deleteUser']);
 
 // Les routes liées aux personnages 
 Route::get('/personnages', [PersonnagesController::class, 'listPersonnages']);
