@@ -11,17 +11,20 @@ class UserController extends Controller
     {
 
         if ($request->has('nom') && !empty($request->nom)) {
-            $users = User::where('nom', 'like', '%' . $request->nom . '%')->get();
+            $users = User::where('name', 'like', '%' . $request->nom . '%')->get();
+            return response()->json($users);
+        } else if ($request->has('email') && !empty($request->email)) {
+            $users = User::where('email', 'like', '%' . $request->email . '%')->get();
             return response()->json($users);
         } else {
-            $users = User::with('classes')->orderby('id', 'desc')->get();
+            $users = User::orderby('id', 'desc')->get();
             return response()->json($users, 200);
         }
     }
 
     public function detailsUser(Request $request)
     {
-        $user = User::where("id", "=", $request->id)->get();
+        $user = User::where("id", "=", $request->id)->with('personnages', 'personnages.sousraces', 'personnages.sousclasses')->get();
         return response()->json($user, 200);
     }
 
