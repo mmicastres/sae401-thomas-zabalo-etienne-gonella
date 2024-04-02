@@ -11,7 +11,7 @@ class SousclassesController extends Controller
     {
 
         if ($request->has('nom') && !empty($request->nom)) {
-            $sousclasses = Sousclasses::where('nom', 'like', '%' . $request->nom . '%')->get();
+            $sousclasses = Sousclasses::where('nom', 'like', '%' . $request->nom . '%')->with('classes')->get();
             return response()->json($sousclasses);
         } else {
             $sousclasses = Sousclasses::with('classes')->orderby('id', 'desc')->get();
@@ -21,7 +21,7 @@ class SousclassesController extends Controller
 
     public function detailsSousClasse(Request $request)
     {
-        $sousclasse = Sousclasses::where("id", "=", $request->id)->get();
+        $sousclasse = Sousclasses::where("id", "=", $request->id)->with('classes')->get();
         return response()->json($sousclasse, 200);
     }
 

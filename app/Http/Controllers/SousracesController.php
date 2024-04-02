@@ -11,7 +11,7 @@ class SousracesController extends Controller
     {
 
         if ($request->has('nom') && !empty($request->nom)) {
-            $sousraces = Sousraces::where('nom', 'like', '%' . $request->nom . '%')->get();
+            $sousraces = Sousraces::where('nom', 'like', '%' . $request->nom . '%')->with('races')->get();
             return response()->json($sousraces);
         } else {
             $sousraces = Sousraces::with('races')->orderby('id', 'desc')->get();
@@ -21,7 +21,7 @@ class SousracesController extends Controller
 
     public function detailsSousRace(Request $request)
     {
-        $sousrace = Sousraces::where("id", "=", $request->id)->get();
+        $sousrace = Sousraces::where("id", "=", $request->id)->with('races')->get();
         return response()->json($sousrace, 200);
     }
 

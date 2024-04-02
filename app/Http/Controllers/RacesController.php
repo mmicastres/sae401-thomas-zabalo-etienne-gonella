@@ -11,7 +11,7 @@ class RacesController extends Controller
     {
 
         if ($request->has('nom') && !empty($request->nom)) {
-            $races = Races::where('nom', 'like', '%' . $request->nom . '%')->get();
+            $races = Races::where('nom', 'like', '%' . $request->nom . '%')->with('sousraces')->get();
             return response()->json($races);
         } else {
             $races = Races::with('sousraces')->orderby('id', 'desc')->get();
@@ -21,7 +21,7 @@ class RacesController extends Controller
 
     public function detailsRace(Request $request)
     {
-        $race = Races::where("id", "=", $request->id)->get();
+        $race = Races::where("id", "=", $request->id)->with('sousraces')->get();
         return response()->json($race, 200);
     }
 
