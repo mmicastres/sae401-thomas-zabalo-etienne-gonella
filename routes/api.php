@@ -9,6 +9,9 @@ use App\Http\Controllers\SousracesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,9 +32,32 @@ Route::get('/', function (Request $request) {
     return response()->json(["Bienvenue dans l'API dédiée à Baldur's Gate 3 de la machine virtuelle, ceci est un test"], 200);
 });
 
+// -- gestion des tokens
+Route::post('/login', function (LoginRequest $request) {
+    // -- LoginRequest a verifié que les email et password étaient présents
+    // -- il faut maintenant vérifier que les identifiants sont corrects
+    $credentials = request(['email', 'password']);
+    if (!Auth::attempt($credentials)) {
+        return response()->json([
+            'status' => 0,
+            'message' => 'Utilisateur inexistant ou identifiants incorreccts'
+        ], 401);
+    }
+    // tout est ok, on peut générer le token
+    $user = $request->user();
+    $tokenResult = $user->createToken('Personal Access Token');
+    $token = $tokenResult->plainTextToken;
+    return response()->json([
+        'status' => 1,
+        'accessToken' => $token,
+        'token_type' => 'Bearer',
+        'user_id' => $user->id
+    ]);
+});
+
 // Les routes liées aux Users 
 
-Route::get('/users', [UserController::class, 'listUsers']);
+Route::middleware('auth:sanctum')->get('/users', [UserController::class, 'listUsers']);
 Route::get('/users/{id}', [UserController::class, 'detailsUser']);
 Route::post('/users', [UserController::class, 'addUser']);
 Route::put('/users/{id}', [UserController::class, 'updateUser']);
