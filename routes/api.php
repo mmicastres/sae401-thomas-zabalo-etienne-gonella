@@ -31,10 +31,10 @@ Route::get('/', function (Request $request) {
 });
 
 // -- gestion des tokens
-Route::post('/login', [UserController::class, 'login']);
+Route::post('/login', [UserController::class, 'login']);    
 Route::middleware('auth:sanctum')->post('/logout', [UserController::class, 'logout']);
 // Les routes liées aux Users 
-Route::middleware('auth:sanctum')->get('/users', [UserController::class, 'listUsers']);
+Route::middleware(['auth:sanctum', 'abilities:administrateur'])->get('/users', [UserController::class, 'listUsers']);
 Route::middleware('auth:sanctum')->get('/users/{id}', [UserController::class, 'detailsUser']);
 Route::middleware('auth:sanctum')->post('/users', [UserController::class, 'addUser']);
 Route::middleware('auth:sanctum')->put('/users/{id}', [UserController::class, 'updateUser']);

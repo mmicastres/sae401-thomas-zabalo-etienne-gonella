@@ -28,16 +28,28 @@ class UserController extends Controller
             $user->tokens()->delete();
         } else {
         }
-        $tokenResult = $user->createToken('Personal Access Token');
-        $token = $tokenResult->plainTextToken;
-        return response()->json([
-            'status' => 1,
-            'accessToken' => $token,
-            'token_type' => 'Bearer',
-            'user_id' => $user->id
-        ]);
+        if ($user->administrateur) {
+            $tokenResult = $user->createToken('Personal Access Token', ['administrateur']); 
+            $token = $tokenResult->plainTextToken;
+            return response()->json([
+                'status' => 1,
+                'accessToken' => $token,
+                'token_type' => 'Bearer',
+                'user_id' => $user->id,
+                'admin' => 'admin'
+            ]);
+        } else {
+            $tokenResult = $user->createToken('Personal Access Token');
+            $token = $tokenResult->plainTextToken;
+            return response()->json([
+                'status' => 1,
+                'accessToken' => $token,
+                'token_type' => 'Bearer',
+                'user_id' => $user->id
+            ]);
+        }
     }
-    
+
     public function logout(Request $request)
     {
         $user = $request->user();
