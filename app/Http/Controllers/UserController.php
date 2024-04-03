@@ -10,6 +10,15 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 
 {
+
+    public function test(Request $request)
+    {
+        $user = $request->user();
+        if ($user->tokenCan('dodrugs')) {
+            return ("tu peux le faire");
+        }
+        return ("tu ne peux pas le faire");
+    }
     // Gestion des Token
     public function login(LoginRequest $request)
     {
@@ -29,7 +38,7 @@ class UserController extends Controller
         } else {
         }
         if ($user->administrateur) {
-            $tokenResult = $user->createToken('Personal Access Token', ['administrateur']); 
+            $tokenResult = $user->createToken('Personal Access Token', ['abilities:administrateur']);
             $token = $tokenResult->plainTextToken;
             return response()->json([
                 'status' => 1,

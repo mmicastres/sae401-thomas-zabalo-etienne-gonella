@@ -30,8 +30,12 @@ Route::get('/', function (Request $request) {
     return response()->json(["Bienvenue dans l'API dédiée à Baldur's Gate 3 de la machine virtuelle, ceci est un test"], 200);
 });
 
+
+Route::middleware('auth:sanctum')->get('/test', [UserController::class, 'test']);    
+
 // -- gestion des tokens
 Route::post('/login', [UserController::class, 'login']);    
+
 Route::middleware('auth:sanctum')->post('/logout', [UserController::class, 'logout']);
 // Les routes liées aux Users 
 Route::middleware(['auth:sanctum', 'abilities:administrateur'])->get('/users', [UserController::class, 'listUsers']);
