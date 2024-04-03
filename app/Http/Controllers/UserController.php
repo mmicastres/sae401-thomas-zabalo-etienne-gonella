@@ -4,9 +4,58 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
+
 {
+    // Gestion des Token
+    public function login(LoginRequest $request)
+    {
+        // -- LoginRequest a verifié que les email et password étaient présents
+        // -- il faut maintenant vérifier que les identifiants sont corrects
+        $credentials = request(['email', 'password']);
+        if (!Auth::attempt($credentials)) {
+            return response()->json([
+                'status' => 0,
+                'message' => 'Utilisateur inexistant ou identifiants incorreccts'
+            ], 401);
+        }
+        // tout est ok, on peut générer le token
+        $user = $request->user();
+        if ($user->tokens()) {
+            $user->tokens()->delete();
+        } else {
+        }
+        $tokenResult = $user->createToken('Personal Access Token');
+        $token = $tokenResult->plainTextToken;
+        return response()->json([
+            'status' => 1,
+            'accessToken' => $token,
+            'token_type' => 'Bearer',
+            'user_id' => $user->id
+        ]);
+    }
+    public function logout(Request $request)
+    {
+        $user = User::where("remember_token", "=", $request->bearerToken())->get();
+        return ($user);
+        // Revoke the token that was used to authenticate the current request...
+        $ok = $user->tokens()->delete();
+        if ($ok) {
+            return response()->json([
+                'message' => 'token deleted, logged out',
+                'user_id' => $user->id
+            ]);
+        } else {
+            return response()->json([
+                'status' => 0,
+                'message' => 'Pas de tokens existants'
+            ], 401);
+        }
+    }
+
     public function listUsers(Request $request)
     {
 
