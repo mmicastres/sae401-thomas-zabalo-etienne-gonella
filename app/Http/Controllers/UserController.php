@@ -37,9 +37,10 @@ class UserController extends Controller
             'user_id' => $user->id
         ]);
     }
+    
     public function logout(Request $request)
     {
-        $user =$request->user();
+        $user = $request->user();
         // Revoke the token that was used to authenticate the current request...
         $ok = $user->tokens()->delete();
         if ($ok) {
