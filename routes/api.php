@@ -9,8 +9,6 @@ use App\Http\Controllers\SousracesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Requests\LoginRequest;
-use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,15 +30,16 @@ Route::get('/', function (Request $request) {
     return response()->json(["Bienvenue dans l'API dédiée à Baldur's Gate 3 de la machine virtuelle, ceci est un test"], 200);
 });
 
+// -- gestion des tokens
+Route::post('/login', [UserController::class, 'login']);
+Route::middleware('auth:sanctum')->post('/logout', [UserController::class, 'logout']);
 // Les routes liées aux Users 
 Route::middleware('auth:sanctum')->get('/users', [UserController::class, 'listUsers']);
 Route::middleware('auth:sanctum')->get('/users/{id}', [UserController::class, 'detailsUser']);
 Route::middleware('auth:sanctum')->post('/users', [UserController::class, 'addUser']);
 Route::middleware('auth:sanctum')->put('/users/{id}', [UserController::class, 'updateUser']);
 Route::middleware('auth:sanctum')->delete('/users/{id}', [UserController::class, 'deleteUser']);
-// -- gestion des tokens
-Route::post('/login', [UserController::class, 'login']);
-Route::middleware('auth:sanctum')->post('/logout', [UserController::class, 'logout']);
+
 
 
 // Les routes liées aux personnages 
