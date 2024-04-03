@@ -39,8 +39,7 @@ class UserController extends Controller
     }
     public function logout(Request $request)
     {
-        $user = User::where("remember_token", "=", $request->bearerToken())->get();
-        return ($user);
+        $user =$request->user();
         // Revoke the token that was used to authenticate the current request...
         $ok = $user->tokens()->delete();
         if ($ok) {
