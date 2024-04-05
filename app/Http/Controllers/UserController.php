@@ -38,7 +38,7 @@ class UserController extends Controller
         } else {
         }
         if ($user->administrateur) {
-            $tokenResult = $user->createToken('Personal Access Token', ['abilities:administrateur']);
+            $tokenResult = $user->createToken('Personal Access Token', ['administrateur']);
             $token = $tokenResult->plainTextToken;
             return response()->json([
                 'status' => 1,
@@ -48,7 +48,7 @@ class UserController extends Controller
                 'admin' => 'admin'
             ]);
         } else {
-            $tokenResult = $user->createToken('Personal Access Token');
+            $tokenResult = $user->createToken('Personal Access Token', ['utilisateur']);
             $token = $tokenResult->plainTextToken;
             return response()->json([
                 'status' => 1,

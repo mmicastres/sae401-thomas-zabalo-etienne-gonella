@@ -35,8 +35,8 @@ Route::middleware('auth:sanctum')->get('/test', [UserController::class, 'test'])
 
 // -- gestion des tokens
 Route::post('/login', [UserController::class, 'login']);    
-
 Route::middleware('auth:sanctum')->post('/logout', [UserController::class, 'logout']);
+
 // Les routes liées aux Users 
 Route::middleware(['auth:sanctum', 'abilities:administrateur'])->get('/users', [UserController::class, 'listUsers']);
 Route::middleware('auth:sanctum')->get('/users/{id}', [UserController::class, 'detailsUser']);
