@@ -10,15 +10,6 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 
 {
-
-    public function test(Request $request)
-    {
-        $user = $request->user();
-        if ($user->tokenCan('dodrugs')) {
-            return ("tu peux le faire");
-        }
-        return ("tu ne peux pas le faire");
-    }
     // Gestion des Token
     public function login(LoginRequest $request)
     {
@@ -94,8 +85,16 @@ class UserController extends Controller
 
     public function detailsUser(Request $request)
     {
-        $user = User::where("id", "=", $request->id)->with('personnages', 'personnages.sousraces', 'personnages.sousclasses')->get();
-        return response()->json($user, 200);
+        $user = $request->user();
+        $detailUser = User::where("id", "=", $request->id)->with('personnages', 'personnages.sousraces', 'personnages.sousclasses')->get();
+        if ($user->administrateur || $user->id == $detailUser->id) {
+            return response()->json($detailUser, 200);
+        } else {
+            return response()->json([
+                'status' => 0,
+                'message' => 'Pas de tokens existants'
+            ], 401);
+        }
     }
 
     public function addUser(Request $request)

@@ -31,8 +31,6 @@ Route::get('/', function (Request $request) {
 });
 
 
-Route::middleware('auth:sanctum')->get('/test', [UserController::class, 'test']);    
-
 // -- gestion des tokens
 Route::post('/login', [UserController::class, 'login']);    
 Route::middleware('auth:sanctum')->post('/logout', [UserController::class, 'logout']);
