@@ -27,7 +27,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('/', function (Request $request) {
-    return response()->json(["Bienvenue dans l'API dédiée à Baldur's Gate 3 de la machine virtuelle, ceci est un test"], 200);
+    $guide = "Bienvenue dans l'API dédiée à Baldur's Gate 3.
+    Cette API vous permet d'accéder à de nombreuses fonctionnalités, nottament la création de personnages.
+    POur accéder à la lsite des classes, sousclasses, races, origines, personnages veuillez taper https://zabalo.alwaysdata.net/sae401/api/typedobjetquevouscherchez
+    Si vous souhaitez les détails d'un élément en particulier, taper https://zabalo.alwaysdata.net/sae401/api/typeobjetquevouscherchez/iddevotreobjet";
+    return response()->json([$guide], 200);
 });
 
 
