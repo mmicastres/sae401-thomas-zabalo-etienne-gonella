@@ -88,7 +88,7 @@ class UserController extends Controller
         $user = $request->user();
         if ($user->administrateur || $user->id == $request->id) {
             $detailUser = User::where("id", "=", $request->id)->with('personnages', 'personnages.sousraces', 'personnages.sousclasses')->get();
-            return response()->json($detailUser, 200);
+            return response()->json($detailUser[0], 200);
         } else {
             return response()->json([
                 'status' => 0,

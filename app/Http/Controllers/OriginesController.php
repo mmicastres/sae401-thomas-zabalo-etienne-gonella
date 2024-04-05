@@ -24,7 +24,7 @@ class OriginesController extends Controller
     public function detailsOrigine(Request $request)
     {
         $origine = Origines::where("id", "=", $request->id)->get();
-        return response()->json($origine, 200);
+        return response()->json($origine[0], 200);
     }
 
     public function addOrigine(Request $request)

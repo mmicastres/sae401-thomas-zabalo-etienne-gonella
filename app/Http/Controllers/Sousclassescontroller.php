@@ -22,7 +22,7 @@ class SousclassesController extends Controller
     public function detailsSousClasse(Request $request)
     {
         $sousclasse = Sousclasses::where("id", "=", $request->id)->with('classes')->get();
-        return response()->json($sousclasse, 200);
+        return response()->json($sousclasse[0], 200);
     }
 
     public function addSousClasse(Request $request)

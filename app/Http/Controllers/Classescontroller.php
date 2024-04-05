@@ -22,7 +22,7 @@ class ClassesController extends Controller
     public function detailsClasse(Request $request)
     {
         $classe = Classes::where("id", "=", $request->id)->with('sousclasses')->get();
-        return response()->json($classe, 200);
+        return response()->json($classe[0], 200);
     }
 
     public function addClasse(Request $request)

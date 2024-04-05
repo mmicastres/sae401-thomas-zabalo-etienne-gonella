@@ -22,7 +22,7 @@ class SousracesController extends Controller
     public function detailsSousRace(Request $request)
     {
         $sousrace = Sousraces::where("id", "=", $request->id)->with('races')->get();
-        return response()->json($sousrace, 200);
+        return response()->json($sousrace[0], 200);
     }
 
     public function addSousRace(Request $request)
