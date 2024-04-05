@@ -86,19 +86,24 @@ class UserController extends Controller
     public function detailsUser(Request $request)
     {
         $user = $request->user();
-        $detailUser = User::where("id", "=", $request->id)->with('personnages', 'personnages.sousraces', 'personnages.sousclasses')->get();
-        if ($user->administrateur || $user->id == $detailUser->id) {
+        if ($user->administrateur || $user->id == $request->id) {
+            $detailUser = User::where("id", "=", $request->id)->with('personnages', 'personnages.sousraces', 'personnages.sousclasses')->get();
             return response()->json($detailUser, 200);
         } else {
             return response()->json([
                 'status' => 0,
-                'message' => 'Pas de tokens existants'
+                'message' => 'Pas le bon votre id, pas admin'
             ], 401);
         }
     }
 
-    public function addUser(Request $request)
+    public function addUser(LoginRequest $request)
     {
+        $verif = User::where("email", "=", $request->email)->get();
+        if ($verif->isNotEmpty()) {
+            return $verif->isEmpty();
+            return response()->json(["status" => 0, "message" => "email déjà utilisé"], 400);
+        }
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
@@ -110,7 +115,7 @@ class UserController extends Controller
         if ($ok) {
             return response()->json(["status" => 1, "message" => "User ajouté dans la bd"], 201);
         } else {
-            return response()->json(["status" => 0, "message" => "pb lors de
+            return response()->json(["status"  => 0, "message" => "pb lors de
        l'ajout de la user"], 400);
         }
     }
@@ -128,15 +133,23 @@ class UserController extends Controller
 
     public function updateUser(Request $request, $id)
     {
-        $user = User::find($id);
-        if ($user) {
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->password = $request->password;
-            $user->save();
-            return response()->json(["status" => 1, "message" => "user modifié"], 201);
+        $user = $request->user();
+        if ($user->administrateur || $user->id == $request->id) {
+            $modifUser = User::find($id);
+            if ($modifUser) {
+                $modifUser->name = $request->name;
+                $modifUser->email = $request->email;
+                $modifUser->password = $request->password;
+                $modifUser->save();
+                return response()->json(["status" => 1, "message" => "user modifié"], 201);
+            } else {
+                return response()->json(["status" => 0, "message" => "Ce user n'existe pas"], 400);
+            }
         } else {
-            return response()->json(["status" => 0, "message" => "Cette User n'existe pas"], 400);
+            return response()->json([
+                'status' => 0,
+                'message' => 'Pas le bon votre id, pas admin'
+            ], 401);
         }
     }
 }
