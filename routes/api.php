@@ -6,6 +6,7 @@ use App\Http\Controllers\PersonnagesController;
 use App\Http\Controllers\RacesController;
 use App\Http\Controllers\SousclassesController;
 use App\Http\Controllers\SousracesController;
+use App\Http\Controllers\CompetencesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -94,3 +95,11 @@ Route::get('/origines/{id}', [OriginesController::class, 'detailsOrigine']);
 Route::middleware(['auth:sanctum', 'abilities:administrateur'])->post('/origines', [OriginesController::class, 'addOrigine']);
 Route::middleware(['auth:sanctum', 'abilities:administrateur'])->put('/origines/{id}', [OriginesController::class, 'updateOrigine']);
 Route::middleware(['auth:sanctum', 'abilities:administrateur'])->delete('/origines/{id}', [OriginesController::class, 'deleteOrigine']);
+
+// Les routes liées aux Competences 
+
+Route::get('/competences', [CompetencesController::class, 'listCompetences']);
+Route::get('/competences/{id}', [CompetencesController::class, 'detailsCompetence']);
+Route::middleware(['auth:sanctum', 'abilities:administrateur'])->post('/competences', [CompetencesController::class, 'addCompetence']);
+Route::middleware(['auth:sanctum', 'abilities:administrateur'])->put('/competences/{id}', [CompetencesController::class, 'updateCompetence']);
+Route::middleware(['auth:sanctum', 'abilities:administrateur'])->delete('/competences/{id}', [CompetencesController::class, 'deleteCompetence']);

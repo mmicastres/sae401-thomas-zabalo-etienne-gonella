@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Personnages;
-use App\Models\Sousclasses;
 
 class PersonnagesController extends Controller
 {
