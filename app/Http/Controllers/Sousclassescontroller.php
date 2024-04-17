@@ -21,7 +21,7 @@ class SousclassesController extends Controller
 
     public function detailsSousClasse(Request $request)
     {
-        $sousclasse = Sousclasses::where("id", "=", $request->id)->with('classes')->get();
+        $sousclasse = Sousclasses::where("id", "=", $request->id)->with('classes','competences')->get();
         return response()->json($sousclasse[0], 200);
     }
 

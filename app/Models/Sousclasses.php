@@ -17,4 +17,9 @@ class Sousclasses extends Model
     public function personnages(){
         return $this->hasMany(Personnages::class);
     }
+
+    public function competences()
+    {
+        return $this->belongsToMany(Competences::class);
+    }
 }

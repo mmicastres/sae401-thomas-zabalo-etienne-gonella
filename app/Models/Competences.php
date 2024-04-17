@@ -14,4 +14,14 @@ class Competences extends Model
     {
         return $this->belongsToMany(Personnages::class);
     }
+
+    public function sousRaces()
+    {
+        return $this->belongsToMany(Sousraces::class);
+    }
+
+    public function sousClasses()
+    {
+        return $this->belongsToMany(Sousclasses::class);
+    }
 }
