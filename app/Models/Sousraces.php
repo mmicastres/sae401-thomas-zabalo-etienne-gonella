@@ -19,6 +19,6 @@ class Sousraces extends Model
     }
     public function competences()
     {
-        return $this->belongsToMany(Competences::class);
+        return $this->belongsToMany(Competences::class)->withPivot('nivmin');
     }
 }

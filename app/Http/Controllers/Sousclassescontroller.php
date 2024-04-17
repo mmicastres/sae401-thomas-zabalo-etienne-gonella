@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sousclasses;
+use App\Models\SousClasses;
 use Illuminate\Http\Request;
 
 class SousclassesController extends Controller

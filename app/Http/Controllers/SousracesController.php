@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sousraces;
+use App\Models\SousRaces;
 use Illuminate\Http\Request;
 
 class SousracesController extends Controller
@@ -21,7 +21,7 @@ class SousracesController extends Controller
 
     public function detailsSousRace(Request $request)
     {
-        $sousrace = Sousraces::where("id", "=", $request->id)->with('races')->get();
+        $sousrace = Sousraces::where("id", "=", $request->id)->with('races','competences')->get();
         return response()->json($sousrace[0], 200);
     }
 
