@@ -39,4 +39,9 @@ class Personnages extends Model
     {
         return $this->belongsTo(User::class);    
     }
+
+    public function competences()
+    {
+        return $this->belongsToMany(Competences::class, 'a','competence_id','personnage_id');
+    }
 }
