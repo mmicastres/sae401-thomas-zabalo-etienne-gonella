@@ -12,6 +12,6 @@ class Competences extends Model
 
     public function personnages()
     {
-        return $this->belongsToMany(Personnages::class, 'a', 'competence_id', 'personnage_id');
+        return $this->belongsToMany(Personnages::class);
     }
 }
