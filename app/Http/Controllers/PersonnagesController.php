@@ -23,7 +23,7 @@ class PersonnagesController extends Controller
 
     public function detailsPersonnage(Request $request)
     {
-        $personnage = Personnages::where("id","=",$request->id)->with('origines','sousclasses','sousclasses.classes','sousraces','sousraces.races')->get();
+        $personnage = Personnages::where("id","=",$request->id)->with('origines','sousclasses','sousclasses.classes','sousraces','sousraces.races', 'user')->get();
         return response()->json($personnage[0], 200);
     }
 
@@ -31,7 +31,7 @@ class PersonnagesController extends Controller
     {
         $personnage = new Personnages;
         $personnage->sousraces_id = $request->sousraces_id;
-        $personnage->origine_id = $request->origine_id;
+        $personnage->origines_id = $request->origines_id;
         $personnage->sousclasses_id = $request->sousclasses_id;
         $personnage->user_id = $request->user_id;
         $personnage->nom = $request->nom;
