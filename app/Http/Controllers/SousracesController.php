@@ -21,7 +21,7 @@ class SousracesController extends Controller
 
     public function detailsSousRace(Request $request)
     {
-        $sousrace = Sousraces::where("id", "=", $request->id)->with('races','competences')->get();
+        $sousrace = Sousraces::where("id", "=", $request->id)->with('races','competences','sorts')->get();
         return response()->json($sousrace[0], 200);
     }
 

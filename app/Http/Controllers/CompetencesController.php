@@ -9,8 +9,6 @@ class CompetencesController extends Controller
 {
     public function listCompetences(Request $request)
     {
-
-
         if ($request->has('nom') && !empty($request->nom)) {
             $competences = Competences::where('nom', 'like', '%' . $request->nom . '%')->get();
             return response()->json($competences);
@@ -32,6 +30,7 @@ class CompetencesController extends Controller
         $competence->nom = $request->nom;
         $competence->description = $request->description;
         $competence->icone = $request->icone;
+        $competence->action = $request->action;
         $idCompetence = Competences::count() + 1;
         $competence->id = $idCompetence;
 
@@ -62,6 +61,7 @@ class CompetencesController extends Controller
             $competence->nom = $request->nom;
             $competence->description = $request->description;
             $competence->icone = $request->icone;
+            $competence->action = $request->action;
             $competence->save();
             return response()->json(["status" => 1, "message" => "competence modifié"], 201);
         } else {

@@ -22,4 +22,9 @@ class Sousclasses extends Model
     {
         return $this->belongsToMany(Competences::class)->withPivot('nivmin');
     }
+
+    public function sorts()
+    {
+        return $this->belongsToMany(Sorts::class)->withPivot('nivmin');
+    }
 }

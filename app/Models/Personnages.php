@@ -9,7 +9,7 @@ class Personnages extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    
+
     public function origines()
     {
         return $this->belongsTo(Origines::class);
@@ -22,7 +22,7 @@ class Personnages extends Model
 
     public function classes()
     {
-        return $this->belongsTo(Classes::class);    
+        return $this->belongsTo(Classes::class);
     }
 
     public function sousraces()
@@ -32,16 +32,21 @@ class Personnages extends Model
 
     public function races()
     {
-        return $this->belongsTo(Races::class);    
+        return $this->belongsTo(Races::class);
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class);    
+        return $this->belongsTo(User::class);
     }
 
     public function competences()
     {
         return $this->belongsToMany(Competences::class);
+    }
+
+    public function sorts()
+    {
+        return $this->belongsToMany(Sorts::class);
     }
 }

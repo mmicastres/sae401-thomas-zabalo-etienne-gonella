@@ -10,15 +10,21 @@ class Sousraces extends Model
     use HasFactory;
     public $timestamps = false;
 
-    public function races(){
+    public function races()
+    {
         return $this->belongsTo(Races::class);
     }
 
-    public function personnages(){
+    public function personnages()
+    {
         return $this->hasMany(Personnages::class);
     }
     public function competences()
     {
         return $this->belongsToMany(Competences::class)->withPivot('nivmin');
+    }
+    public function sorts()
+    {
+        return $this->belongsToMany(Sorts::class)->withPivot('nivmin');
     }
 }
