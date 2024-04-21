@@ -37,7 +37,6 @@ class PersonnagesController extends Controller
         $personnage->nom = $request->nom;
         $idPersonnage = Personnages::count() + 1;
         $personnage->id = $idPersonnage;
-
         $ok = $personnage->save();
 
         if ($request->competences) {
