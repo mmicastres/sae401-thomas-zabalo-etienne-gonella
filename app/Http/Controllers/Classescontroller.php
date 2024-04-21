@@ -33,8 +33,14 @@ class ClassesController extends Controller
         $classe->icone = $request->icone;
         $idClasse = Classes::count() + 1;
         $classe->id = $idClasse;
-
         $ok = $classe->save();
+
+        $statistiques = $request->statistiques;
+            foreach ($statistiques as $stat) {
+                $statId = $stat['id'];
+                $valeur = $stat['valeur'];
+                $classe->statistiques()->attach($statId, ['valeur' => $valeur]);
+            }
         if ($ok) {
             return response()->json(["status" => 1, "message" => "Classe ajouté dans la bd"], 201);
         } else {
