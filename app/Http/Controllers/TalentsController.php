@@ -29,7 +29,7 @@ class TalentsController extends Controller
     public function addTalent(Request $request)
     {
         $talent = new Talents;
-        $talent->statistique_id = $request->statistique_id;
+        $talent->statistiques_id = $request->statistiques_id;
         $talent->nom = $request->nom;
         $talent->description = $request->description;
         $talent->icone = $request->icone;
@@ -75,7 +75,7 @@ class TalentsController extends Controller
     {
         $talent = Talents::find($id);
         if ($talent) {
-            $talent->statistique_id = $request->statistique_id;
+            $talent->statistiques_id = $request->statistiques_id;
             $talent->nom = $request->nom;
             $talent->description = $request->description;
             $talent->icone = $request->icone;
