@@ -23,4 +23,9 @@ class Classes extends Model
     {
         return $this->belongsToMany(Talents::class);
     }
+
+    public function statistiques()
+    {
+        return $this->belongsToMany(Statistiques::class);
+    }
 }

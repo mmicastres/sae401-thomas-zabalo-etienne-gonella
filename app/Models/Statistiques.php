@@ -10,4 +10,8 @@ class Statistiques extends Model
     use HasFactory;
     public $timestamps = false;
 
+    public function classes()
+    {
+        return $this->belongsToMany(Classes::class);
+    }
 }
