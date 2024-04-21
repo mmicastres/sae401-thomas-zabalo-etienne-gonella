@@ -68,6 +68,13 @@ class ClassesController extends Controller
             $classe->description = $request->description;
             $classe->icone = $request->icone;
             $classe->save();
+
+            $statistiques = $request->statistiques;
+            foreach ($statistiques as $stat) {
+                $statId = $stat['id'];
+                $valeur = $stat['valeur'];
+                $classe->statistiques()->sync($statId, ['valeur' => $valeur]);
+            }
             return response()->json(["status" => 1, "message" => "classe modifié"], 201);
         } else {
             return response()->json(["status" => 0, "message" => "Cette classe n'existe pas"], 400);
