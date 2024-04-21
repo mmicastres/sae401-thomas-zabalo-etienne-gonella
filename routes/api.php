@@ -7,7 +7,8 @@ use App\Http\Controllers\RacesController;
 use App\Http\Controllers\SousclassesController;
 use App\Http\Controllers\SousracesController;
 use App\Http\Controllers\CompetencesController;
-use App\Http\Controllers\SortsController;   
+use App\Http\Controllers\SortsController;
+use App\Http\Controllers\TalentsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -112,3 +113,11 @@ Route::get('/sorts/{id}', [SortsController::class, 'detailsSort']);
 Route::middleware(['auth:sanctum', 'abilities:administrateur'])->post('/sorts', [SortsController::class, 'addSort']);
 Route::middleware(['auth:sanctum', 'abilities:administrateur'])->put('/sorts/{id}', [SortsController::class, 'updateSort']);
 Route::middleware(['auth:sanctum', 'abilities:administrateur'])->delete('/sorts/{id}', [SortsController::class, 'deleteSort']);
+
+// Les routes liées aux Talents  
+
+Route::get('/talents', [TalentsController::class, 'listTalents']);
+Route::get('/talents/{id}', [TalentsController::class, 'detailsTalent']);
+Route::middleware(['auth:sanctum', 'abilities:administrateur'])->post('/talents', [TalentsController::class, 'addTalent']);
+Route::middleware(['auth:sanctum', 'abilities:administrateur'])->put('/talents/{id}', [TalentsController::class, 'updateTalent']);
+Route::middleware(['auth:sanctum', 'abilities:administrateur'])->delete('/talents/{id}', [TalentsController::class, 'deleteTalent']);

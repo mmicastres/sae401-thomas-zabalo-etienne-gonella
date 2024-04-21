@@ -10,11 +10,13 @@ class Sousclasses extends Model
     use HasFactory;
     public $timestamps = false;
 
-    public function classes(){
+    public function classes()
+    {
         return $this->belongsTo(Classes::class);
     }
 
-    public function personnages(){
+    public function personnages()
+    {
         return $this->hasMany(Personnages::class);
     }
 

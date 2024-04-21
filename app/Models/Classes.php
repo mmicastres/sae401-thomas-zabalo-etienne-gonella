@@ -10,11 +10,17 @@ class Classes extends Model
     use HasFactory;
     public $timestamps = false;
 
-    public function sousclasses(){
+    public function sousclasses()
+    {
         return $this->hasMany(Sousclasses::class);
     }
 
-    public function personnages(){
+    public function personnages()
+    {
         return $this->hasMany(Personnages::class);
+    }
+    public function Talents()
+    {
+        return $this->belongsToMany(Talents::class);
     }
 }

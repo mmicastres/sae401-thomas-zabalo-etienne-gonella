@@ -1,0 +1,73 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Talents;
+
+class TalentsController extends Controller
+{
+    public function listTalents(Request $request)
+    {
+
+
+        if ($request->has('nom') && !empty($request->nom)) {
+            $talents = Talents::where('nom', 'like', '%' . $request->nom . '%')->get();
+            return response()->json($talents);
+        } else {
+            $talents = Talents::orderby('id', 'desc')->get();
+            return response()->json($talents, 200);
+        }
+    }
+
+    public function detailsTalent(Request $request)
+    {
+        $talent = Talents::where("id", "=", $request->id)->get();
+        return response()->json($talent[0], 200);
+    }
+
+    public function addTalent(Request $request)
+    {
+        $talent = new Talents;
+        $talent->statistique_id = $request->statistique_id;
+        $talent->nom = $request->nom;
+        $talent->description = $request->description;
+        $talent->icone = $request->icone;
+        $idTalent = Talents::count() + 1;
+        $talent->id = $idTalent;
+
+        $ok = $talent->save();
+        if ($ok) {
+            return response()->json(["status" => 1, "message" => "Talent ajouté dans la bd"], 201);
+        } else {
+            return response()->json(["status" => 0, "message" => "pb lors de
+       l'ajout de l'talent"], 400);
+        }
+    }
+
+    public function deleteTalent(Request $request, $id)
+    {
+        $talent = Talents::find($id);
+        if ($talent) {
+            $talent->delete();
+            return response()->json(["status" => 1, "message" => "Talent supprimé de la bd"], 201);
+        } else {
+            return response()->json(["status" => 0, "message" => "Cette talent n'existe pas"], 400);
+        }
+    }
+
+    public function updateTalent(Request $request, $id)
+    {
+        $talent = Talents::find($id);
+        if ($talent) {
+            $talent->statistique_id = $request->statistique_id;
+            $talent->nom = $request->nom;
+            $talent->description = $request->description;
+            $talent->icone = $request->icone;
+            $talent->save();
+            return response()->json(["status" => 1, "message" => "talent modifié"], 201);
+        } else {
+            return response()->json(["status" => 0, "message" => "Cette talent n'existe pas"], 400);
+        }
+    }
+}

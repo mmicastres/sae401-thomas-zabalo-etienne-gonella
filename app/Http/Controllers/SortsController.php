@@ -86,7 +86,7 @@ class SortsController extends Controller
             $sort->icone = $request->icone;
             $sort->action = $request->action;
             $sort->save();
-            
+
             if ($request->sousRaces) {
                 $sousRaces = $request->sousRaces;
                 foreach ($sousRaces as $sousRace) {

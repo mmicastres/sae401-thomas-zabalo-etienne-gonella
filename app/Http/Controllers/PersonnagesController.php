@@ -49,6 +49,12 @@ class PersonnagesController extends Controller
             $personnage->sorts()->attach($sortsIds);
         }
 
+        if ($request->talents) {
+            $talentsIds = $request->talents;
+            $personnage->talents()->attach($talentsIds);
+        }
+
+
         if ($ok) {
             return response()->json(["status" => 1, "message" => "Personnage ajouté dans la bd"], 201);
         } else {

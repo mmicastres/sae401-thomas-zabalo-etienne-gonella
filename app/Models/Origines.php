@@ -10,7 +10,13 @@ class Origines extends Model
     use HasFactory;
     public $timestamps = false;
 
-    public function personnages(){
+    public function personnages()
+    {
         return $this->hasMany(Personnages::class);
+    }
+
+    public function Talents()
+    {
+        return $this->belongsToMany(Talents::class);
     }
 }
