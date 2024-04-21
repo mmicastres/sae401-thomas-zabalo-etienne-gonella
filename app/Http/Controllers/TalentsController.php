@@ -39,17 +39,17 @@ class TalentsController extends Controller
         $ok = $talent->save();
 
         if ($request->classes) {
-            $classesIds = $request->competences;
+            $classesIds = $request->classes;
             $talent->classes()->attach($classesIds);
         }
 
         if ($request->races) {
-            $racesIds = $request->sorts;
+            $racesIds = $request->races;
             $talent->races()->attach($racesIds);
         }
 
         if ($request->origines) {
-            $originesIds = $request->talents;
+            $originesIds = $request->origines;
             $talent->origines()->attach($originesIds);
         }
         if ($ok) {
