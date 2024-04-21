@@ -37,6 +37,21 @@ class TalentsController extends Controller
         $talent->id = $idTalent;
 
         $ok = $talent->save();
+
+        if ($request->classes) {
+            $classesIds = $request->competences;
+            $talent->classes()->attach($classesIds);
+        }
+
+        if ($request->races) {
+            $racesIds = $request->sorts;
+            $talent->races()->attach($racesIds);
+        }
+
+        if ($request->origines) {
+            $originesIds = $request->talents;
+            $talent->origines()->attach($originesIds);
+        }
         if ($ok) {
             return response()->json(["status" => 1, "message" => "Talent ajouté dans la bd"], 201);
         } else {
@@ -65,6 +80,22 @@ class TalentsController extends Controller
             $talent->description = $request->description;
             $talent->icone = $request->icone;
             $talent->save();
+
+
+            if ($request->classes) {
+                $classesIds = $request->competences;
+                $talent->classes()->attach($classesIds);
+            }
+
+            if ($request->races) {
+                $racesIds = $request->sorts;
+                $talent->races()->attach($racesIds);
+            }
+
+            if ($request->origines) {
+                $originesIds = $request->talents;
+                $talent->origines()->attach($originesIds);
+            }
             return response()->json(["status" => 1, "message" => "talent modifié"], 201);
         } else {
             return response()->json(["status" => 0, "message" => "Cette talent n'existe pas"], 400);

@@ -93,7 +93,7 @@ class SortsController extends Controller
                     $sousRaceId = $sousRace['id'];
                     $nivmin = $sousRace['nivmin'];
 
-                    $sort->sousRaces()->attach($sousRaceId, ['nivmin' => $nivmin]);
+                    $sort->sousRaces()->sync($sousRaceId, ['nivmin' => $nivmin]);
                 }
             }
             if ($request->sousClasses) {
@@ -102,7 +102,7 @@ class SortsController extends Controller
                     $sousClasseId = $sousClasse['id'];
                     $nivmin = $sousClasse['nivmin'];
 
-                    $sort->sousClasses()->attach($sousClasseId, ['nivmin' => $nivmin]);
+                    $sort->sousClasses()->sync($sousClasseId, ['nivmin' => $nivmin]);
                 }
             }
             return response()->json(["status" => 1, "message" => "sort modifié"], 201);

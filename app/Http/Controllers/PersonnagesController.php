@@ -83,6 +83,22 @@ class PersonnagesController extends Controller
             $personnage->classe_id = $request->classe_id;
             $personnage->nom = $request->nom;
             $personnage->save();
+
+            if ($request->competences) {
+                $competencesIds = $request->competences;
+                $personnage->competences()->sync($competencesIds);
+            }
+
+            if ($request->sorts) {
+                $sortsIds = $request->sorts;
+                $personnage->sorts()->sync($sortsIds);
+            }
+
+            if ($request->talents) {
+                $talentsIds = $request->talents;
+                $personnage->talents()->sync($talentsIds);
+            }
+
             return response()->json(["status" => 1, "message" => "personnage modifié"], 201);
         } else {
             return response()->json(["status" => 0, "message" => "Ce personnage n'existe pas"], 400);

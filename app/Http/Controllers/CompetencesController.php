@@ -86,7 +86,7 @@ class CompetencesController extends Controller
                     $sousRaceId = $sousRace['id'];
                     $nivmin = $sousRace['nivmin'];
 
-                    $competence->sousRaces()->attach($sousRaceId, ['nivmin' => $nivmin]);
+                    $competence->sousRaces()->sync($sousRaceId, ['nivmin' => $nivmin]);
                 }
             }
             if ($request->sousClasses) {
@@ -95,7 +95,7 @@ class CompetencesController extends Controller
                     $sousClasseId = $sousClasse['id'];
                     $nivmin = $sousClasse['nivmin'];
 
-                    $competence->sousClasses()->attach($sousClasseId, ['nivmin' => $nivmin]);
+                    $competence->sousClasses()->sync($sousClasseId, ['nivmin' => $nivmin]);
                 }
             }
             return response()->json(["status" => 1, "message" => "competence modifié"], 201);
