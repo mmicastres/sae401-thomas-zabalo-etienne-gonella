@@ -20,7 +20,7 @@ class Races extends Model
         return $this->hasMany(Personnages::class);
     }
 
-    public function Talents()
+    public function talents()
     {
         return $this->belongsToMany(Talents::class);
     }

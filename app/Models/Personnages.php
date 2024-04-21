@@ -49,4 +49,9 @@ class Personnages extends Model
     {
         return $this->belongsToMany(Sorts::class);
     }
+
+    public function talents()
+    {
+        return $this->belongsToMany(Sorts::class);
+    }
 }

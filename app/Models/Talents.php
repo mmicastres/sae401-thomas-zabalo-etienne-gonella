@@ -9,18 +9,23 @@ class Talents extends Model
 {
     use HasFactory;
 
-    public function Classes()
+    public function classes()
     {
         return $this->belongsToMany(Classes::class);
     }
 
-    public function Races()
+    public function races()
     {
         return $this->belongsToMany(Races::class);
     }
 
-    public function Origines()
+    public function origines()
     {
         return $this->belongsToMany(Origines::class);
+    }
+
+    public function personnages()
+    {
+        return $this->belongsToMany(Sousclasses::class);
     }
 }
