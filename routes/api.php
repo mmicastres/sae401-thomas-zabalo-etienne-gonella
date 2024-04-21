@@ -7,6 +7,7 @@ use App\Http\Controllers\RacesController;
 use App\Http\Controllers\SousclassesController;
 use App\Http\Controllers\SousracesController;
 use App\Http\Controllers\CompetencesController;
+use App\Http\Controllers\SortsController;   
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -103,3 +104,11 @@ Route::get('/competences/{id}', [CompetencesController::class, 'detailsCompetenc
 Route::middleware(['auth:sanctum', 'abilities:administrateur'])->post('/competences', [CompetencesController::class, 'addCompetence']);
 Route::middleware(['auth:sanctum', 'abilities:administrateur'])->put('/competences/{id}', [CompetencesController::class, 'updateCompetence']);
 Route::middleware(['auth:sanctum', 'abilities:administrateur'])->delete('/competences/{id}', [CompetencesController::class, 'deleteCompetence']);
+
+// Les routes liées aux Sorts  
+
+Route::get('/sorts', [SortsController::class, 'listSorts']);
+Route::get('/sorts/{id}', [SortsController::class, 'detailsSort']);
+Route::middleware(['auth:sanctum', 'abilities:administrateur'])->post('/sorts', [SortsController::class, 'addSort']);
+Route::middleware(['auth:sanctum', 'abilities:administrateur'])->put('/sorts/{id}', [SortsController::class, 'updateSort']);
+Route::middleware(['auth:sanctum', 'abilities:administrateur'])->delete('/sorts/{id}', [SortsController::class, 'deleteSort']);

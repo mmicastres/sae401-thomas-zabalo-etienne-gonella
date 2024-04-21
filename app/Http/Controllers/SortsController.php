@@ -36,8 +36,27 @@ class SortsController extends Controller
         $sort->action = $request->action;
         $idSort = Sorts::count() + 1;
         $sort->id = $idSort;
-
         $ok = $sort->save();
+
+        if ($request->sousRaces) {
+            $sousRaces = $request->sousRaces;
+            foreach ($sousRaces as $sousRace) {
+                $sousRaceId = $sousRace['id'];
+                $nivmin = $sousRace['nivmin'];
+
+                $sort->sousRaces()->attach($sousRaceId, ['nivmin' => $nivmin]);
+            }
+        }
+        if ($request->sousClasses) {
+            $sousClasses = $request->sousClasses;
+            foreach ($sousClasses as $sousClasse) {
+                $sousClasseId = $sousClasse['id'];
+                $nivmin = $sousClasse['nivmin'];
+
+                $sort->sousClasses()->attach($sousClasseId, ['nivmin' => $nivmin]);
+            }
+        }
+
         if ($ok) {
             return response()->json(["status" => 1, "message" => "Sort ajouté dans la bd"], 201);
         } else {
@@ -67,6 +86,25 @@ class SortsController extends Controller
             $sort->icone = $request->icone;
             $sort->action = $request->action;
             $sort->save();
+            
+            if ($request->sousRaces) {
+                $sousRaces = $request->sousRaces;
+                foreach ($sousRaces as $sousRace) {
+                    $sousRaceId = $sousRace['id'];
+                    $nivmin = $sousRace['nivmin'];
+
+                    $sort->sousRaces()->attach($sousRaceId, ['nivmin' => $nivmin]);
+                }
+            }
+            if ($request->sousClasses) {
+                $sousClasses = $request->sousClasses;
+                foreach ($sousClasses as $sousClasse) {
+                    $sousClasseId = $sousClasse['id'];
+                    $nivmin = $sousClasse['nivmin'];
+
+                    $sort->sousClasses()->attach($sousClasseId, ['nivmin' => $nivmin]);
+                }
+            }
             return response()->json(["status" => 1, "message" => "sort modifié"], 201);
         } else {
             return response()->json(["status" => 0, "message" => "Cette sort n'existe pas"], 400);

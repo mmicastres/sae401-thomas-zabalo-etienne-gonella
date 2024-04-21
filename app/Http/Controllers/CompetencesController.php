@@ -35,6 +35,23 @@ class CompetencesController extends Controller
         $competence->id = $idCompetence;
 
         $ok = $competence->save();
+        if ($request->sousRaces) {
+            $sousRaces = $request->sousRaces;
+            foreach ($sousRaces as $sousRace) {
+                $sousRaceId = $sousRace['id'];
+                $nivmin = $sousRace['nivmin'];
+                $competence->sousRaces()->attach($sousRaceId, ['nivmin' => $nivmin]);
+            }
+        }
+        if ($request->sousClasses) {
+            $sousClasses = $request->sousClasses;
+            foreach ($sousClasses as $sousClasse) {
+                $sousClasseId = $sousClasse['id'];
+                $nivmin = $sousClasse['nivmin'];
+
+                $competence->sousClasses()->attach($sousClasseId, ['nivmin' => $nivmin]);
+            }
+        }
         if ($ok) {
             return response()->json(["status" => 1, "message" => "Competence ajouté dans la bd"], 201);
         } else {
@@ -63,6 +80,24 @@ class CompetencesController extends Controller
             $competence->icone = $request->icone;
             $competence->action = $request->action;
             $competence->save();
+            if ($request->sousRaces) {
+                $sousRaces = $request->sousRaces;
+                foreach ($sousRaces as $sousRace) {
+                    $sousRaceId = $sousRace['id'];
+                    $nivmin = $sousRace['nivmin'];
+
+                    $competence->sousRaces()->attach($sousRaceId, ['nivmin' => $nivmin]);
+                }
+            }
+            if ($request->sousClasses) {
+                $sousClasses = $request->sousClasses;
+                foreach ($sousClasses as $sousClasse) {
+                    $sousClasseId = $sousClasse['id'];
+                    $nivmin = $sousClasse['nivmin'];
+
+                    $competence->sousClasses()->attach($sousClasseId, ['nivmin' => $nivmin]);
+                }
+            }
             return response()->json(["status" => 1, "message" => "competence modifié"], 201);
         } else {
             return response()->json(["status" => 0, "message" => "Cette competence n'existe pas"], 400);
