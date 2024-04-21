@@ -9,6 +9,7 @@ use App\Http\Controllers\SousracesController;
 use App\Http\Controllers\CompetencesController;
 use App\Http\Controllers\SortsController;
 use App\Http\Controllers\TalentsController;
+use App\Http\Controllers\StatistiquesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -121,3 +122,11 @@ Route::get('/talents/{id}', [TalentsController::class, 'detailsTalent']);
 Route::middleware(['auth:sanctum', 'abilities:administrateur'])->post('/talents', [TalentsController::class, 'addTalent']);
 Route::middleware(['auth:sanctum', 'abilities:administrateur'])->put('/talents/{id}', [TalentsController::class, 'updateTalent']);
 Route::middleware(['auth:sanctum', 'abilities:administrateur'])->delete('/talents/{id}', [TalentsController::class, 'deleteTalent']);
+
+// Les routes liées aux statistiques  
+
+Route::get('/statistiques', [StatistiquesController::class, 'listStatistiques']);
+Route::get('/statistiques/{id}', [StatistiquesController::class, 'detailsStatistique']);
+Route::middleware(['auth:sanctum', 'abilities:administrateur'])->post('/statistiques', [StatistiquesController::class, 'addStatistique']);
+Route::middleware(['auth:sanctum', 'abilities:administrateur'])->put('/statistiques/{id}', [StatistiquesController::class, 'updateStatistique']);
+Route::middleware(['auth:sanctum', 'abilities:administrateur'])->delete('/statistiques/{id}', [StatistiquesController::class, 'deleteStatistique']);
