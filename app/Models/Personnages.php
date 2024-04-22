@@ -52,6 +52,6 @@ class Personnages extends Model
 
     public function talents()
     {
-        return $this->belongsToMany(Sorts::class);
+        return $this->belongsToMany(Talents::class);
     }
 }
