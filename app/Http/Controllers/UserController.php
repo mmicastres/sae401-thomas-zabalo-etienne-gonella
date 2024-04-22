@@ -59,7 +59,7 @@ class UserController extends Controller
             return response()->json([
                 'message' => 'token deleted, logged out',
                 'user_id' => $user->id
-            ]);
+            ]);   
         } else {
             return response()->json([
                 'status' => 0,
