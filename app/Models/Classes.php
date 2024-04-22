@@ -26,6 +26,6 @@ class Classes extends Model
 
     public function statistiques()
     {
-        return $this->belongsToMany(Statistiques::class);
+        return $this->belongsToMany(Statistiques::class)->withPivot("valeur");
     }
 }

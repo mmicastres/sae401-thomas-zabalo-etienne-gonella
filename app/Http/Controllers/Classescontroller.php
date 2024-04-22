@@ -21,7 +21,7 @@ class ClassesController extends Controller
 
     public function detailsClasse(Request $request)
     {
-        $classe = Classes::where("id", "=", $request->id)->with('sousclasses')->get();
+        $classe = Classes::where("id", "=", $request->id)->with('sousclasses','statistiques')->get();
         return response()->json($classe[0], 200);
     }
 
