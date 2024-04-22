@@ -12,7 +12,7 @@ class Classes extends Model
 
     public function sousclasses()
     {
-        return $this->hasMany(Sousclasses::class);
+        return $this->hasMany(SousClasses::class);
     }
 
     public function personnages()

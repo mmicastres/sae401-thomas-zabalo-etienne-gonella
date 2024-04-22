@@ -17,7 +17,7 @@ class Personnages extends Model
 
     public function sousclasses()
     {
-        return $this->belongsTo(Sousclasses::class);
+        return $this->belongsTo(SousClasses::class);
     }
 
     public function classes()
@@ -27,7 +27,7 @@ class Personnages extends Model
 
     public function sousraces()
     {
-        return $this->belongsTo(Sousraces::class);
+        return $this->belongsTo(SousRaces::class);
     }
 
     public function races()

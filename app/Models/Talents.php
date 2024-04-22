@@ -27,6 +27,6 @@ class Talents extends Model
 
     public function personnages()
     {
-        return $this->belongsToMany(Sousclasses::class);
+        return $this->belongsToMany(SousClasses::class);
     }
 }

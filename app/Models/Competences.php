@@ -17,7 +17,7 @@ class Competences extends Model
 
     public function sousRaces()
     {
-        return $this->belongsToMany(Sousraces::class);
+        return $this->belongsToMany(SousRaces::class);
     }
 
     public function sousClasses()

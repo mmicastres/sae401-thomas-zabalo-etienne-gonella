@@ -17,11 +17,11 @@ class Sorts extends Model
 
     public function sousRaces()
     {
-        return $this->belongsToMany(Sousraces::class);
+        return $this->belongsToMany(SousRaces::class);
     }
 
     public function sousClasses()
     {
-        return $this->belongsToMany(Sousclasses::class);
+        return $this->belongsToMany(SousClasses::class);
     }
 }

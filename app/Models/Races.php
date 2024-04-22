@@ -12,7 +12,7 @@ class Races extends Model
 
     public function sousraces()
     {
-        return $this->hasMany(Sousraces::class);
+        return $this->hasMany(SousRaces::class);
     }
 
     public function personnages()
