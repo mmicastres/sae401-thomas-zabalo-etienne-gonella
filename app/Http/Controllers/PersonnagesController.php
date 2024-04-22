@@ -12,7 +12,7 @@ class PersonnagesController extends Controller
 
 
         if ($request->has('nom') && !empty($request->nom)) {
-            $personnages = Personnages::where('nom', 'like', '%' . $request->nom . '%')->get();
+            $personnages = Personnages::where('nom', 'like', '%' . $request->nom . '%')->with('sousclasses', 'sousraces', 'user')->get();
             return response()->json($personnages);
         } else {
             $personnages = Personnages::with('sousclasses', 'sousraces', 'user')->orderby('id', 'desc')->get();
