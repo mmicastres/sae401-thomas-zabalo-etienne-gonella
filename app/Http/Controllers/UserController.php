@@ -101,7 +101,6 @@ class UserController extends Controller
     {
         $verif = User::where("email", "=", $request->email)->get();
         if ($verif->isNotEmpty()) {
-            return $verif->isEmpty();
             return response()->json(["status" => 0, "message" => "email déjà utilisé"], 400);
         }
         $user = new User;
