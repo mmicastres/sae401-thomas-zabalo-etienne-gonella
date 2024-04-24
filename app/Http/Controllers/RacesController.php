@@ -11,10 +11,10 @@ class RacesController extends Controller
     {
 
         if ($request->has('nom') && !empty($request->nom)) {
-            $races = Races::where('nom', 'like', '%' . $request->nom . '%')->with('sousraces')->get();
+            $races = Races::where('nom', 'like', '%' . $request->nom . '%')->orderby('id')->with('sousraces')->get();
             return response()->json($races);
         } else {
-            $races = Races::with('sousraces')->orderby('id', 'desc')->get();
+            $races = Races::with('sousraces')->orderby('id')->get();
             return response()->json($races, 200);
         }
     }

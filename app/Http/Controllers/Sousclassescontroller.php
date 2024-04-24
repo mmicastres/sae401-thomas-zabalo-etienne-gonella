@@ -11,10 +11,10 @@ class SousclassesController extends Controller
     {
 
         if ($request->has('nom') && !empty($request->nom)) {
-            $sousclasses = Sousclasses::where('nom', 'like', '%' . $request->nom . '%')->with('classes')->get();
+            $sousclasses = Sousclasses::where('nom', 'like', '%' . $request->nom . '%')->orderby('id')->with('classes')->get();
             return response()->json($sousclasses);
         } else {
-            $sousclasses = Sousclasses::with('classes')->orderby('id', 'desc')->get();
+            $sousclasses = Sousclasses::with('classes')->orderby('id')->get();
             return response()->json($sousclasses, 200);
         }
     }

@@ -10,10 +10,10 @@ class CompetencesController extends Controller
     public function listCompetences(Request $request)
     {
         if ($request->has('nom') && !empty($request->nom)) {
-            $competences = Competences::where('nom', 'like', '%' . $request->nom . '%')->get();
+            $competences = Competences::where('nom', 'like', '%' . $request->nom . '%')->orderby('id')->get();
             return response()->json($competences);
         } else {
-            $competences = Competences::orderby('id', 'desc')->get();
+            $competences = Competences::orderby('id')->get();
             return response()->json($competences, 200);
         }
     }

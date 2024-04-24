@@ -11,10 +11,10 @@ class ClassesController extends Controller
     {
 
         if ($request->has('nom') && !empty($request->nom)) {
-            $classes = Classes::where('nom', 'like', '%' . $request->nom . '%')->with('sousclasses')->get();
+            $classes = Classes::where('nom', 'like', '%' . $request->nom . '%')->orderby('id')->with('sousclasses')->get();
             return response()->json($classes);
         } else {
-            $classes = Classes::with('sousclasses')->orderby('id', 'desc')->get();
+            $classes = Classes::with('sousclasses')->orderby('id')->get();
             return response()->json($classes, 200);
         }
     }

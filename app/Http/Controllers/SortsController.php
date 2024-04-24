@@ -12,10 +12,10 @@ class SortsController extends Controller
 
 
         if ($request->has('nom') && !empty($request->nom)) {
-            $sorts = Sorts::where('nom', 'like', '%' . $request->nom . '%')->get();
+            $sorts = Sorts::where('nom', 'like', '%' . $request->nom . '%')->orderby('id')->get();
             return response()->json($sorts);
         } else {
-            $sorts = Sorts::orderby('id', 'desc')->get();
+            $sorts = Sorts::orderby('id')->get();
             return response()->json($sorts, 200);
         }
     }

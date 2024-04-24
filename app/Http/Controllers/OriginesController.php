@@ -13,10 +13,10 @@ class OriginesController extends Controller
 
 
         if ($request->has('nom') && !empty($request->nom)) {
-            $origines = Origines::where('nom', 'like', '%' . $request->nom . '%')->get();
+            $origines = Origines::where('nom', 'like', '%' . $request->nom . '%')->orderby('id')->get();
             return response()->json($origines);
         } else {
-            $origines = Origines::orderby('id', 'desc')->get();
+            $origines = Origines::orderby('id')->get();
             return response()->json($origines, 200);
         }
     }

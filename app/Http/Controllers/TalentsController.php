@@ -12,10 +12,10 @@ class TalentsController extends Controller
 
 
         if ($request->has('nom') && !empty($request->nom)) {
-            $talents = Talents::where('nom', 'like', '%' . $request->nom . '%')->get();
+            $talents = Talents::where('nom', 'like', '%' . $request->nom . '%')->orderby('id')->get();
             return response()->json($talents);
         } else {
-            $talents = Talents::orderby('id', 'desc')->get();
+            $talents = Talents::orderby('id')->get();
             return response()->json($talents, 200);
         }
     }

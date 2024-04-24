@@ -11,10 +11,10 @@ class StatistiquesController extends Controller
 
 
         if ($request->has('nom') && !empty($request->nom)) {
-            $statistiques = Statistiques::where('nom', 'like', '%' . $request->nom . '%')->get();
+            $statistiques = Statistiques::where('nom', 'like', '%' . $request->nom . '%')->orderby('id')->get();
             return response()->json($statistiques);
         } else {
-            $statistiques = Statistiques::orderby('id', 'desc')->get();
+            $statistiques = Statistiques::orderby('id')->get();
             return response()->json($statistiques, 200);
         }
     }
