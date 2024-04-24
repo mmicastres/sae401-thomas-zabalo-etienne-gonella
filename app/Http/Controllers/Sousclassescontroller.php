@@ -36,11 +36,11 @@ class SousclassesController extends Controller
 
         // code partagé par Clément, adapté pour ma situation
 
-        // $file = $request->file('image');
-        // $origin = pathinfo($file->getClientOriginalName(), PATHINFO_BASENAME);
-        // $heberg = public_path('/icone/SousClasse') . '/' . $origin;
-        // $file->save($heberg);
-        // $sousclasse->icone = $heberg;
+        $file = $request->file('image');
+        $origin = pathinfo($file->getClientOriginalName(), PATHINFO_BASENAME);
+        $heberg = public_path('/icone/SousClasse/'). $origin;
+        $file->move($heberg);
+        $sousclasse->icone = $heberg;
 
 
         // Fin du code partagé adapté 
