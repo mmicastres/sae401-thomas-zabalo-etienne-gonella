@@ -59,7 +59,7 @@ class UserController extends Controller
             return response()->json([
                 'message' => 'token deleted, logged out',
                 'user_id' => $user->id
-            ]);   
+            ]);
         } else {
             return response()->json([
                 'status' => 0,
@@ -109,6 +109,17 @@ class UserController extends Controller
         $user->password = $request->password;
         $idUser = User::count() + 1;
         $user->id = $idUser;
+
+        // code partagé par Clément, pas mal adapté pour ma situation par ce qu'en fait c'est différent
+
+        $file = $request->file('image');
+        $origin = pathinfo($file->getClientOriginalName(), PATHINFO_BASENAME);
+        $chemin = '/icone/User/';
+        $heberg = public_path($chemin);
+        $file->move($heberg, $origin);
+        $user->icone = url($chemin . $origin);
+
+        // Fin du code partagé adapté 
 
         $ok = $user->save();
         if ($ok) {
