@@ -31,10 +31,19 @@ class SousclassesController extends Controller
         $sousclasse->classes_id = $request->classes_id;
         $sousclasse->nom = $request->nom;
         $sousclasse->description = $request->description;
-        $sousclasse->icone = $request->icone;
         $idSousClasse = Sousclasses::count() + 1;
         $sousclasse->id = $idSousClasse;
 
+        // code partagé par Clément, adapté pour ma situation
+
+        // $file = $request->file('image');
+        // $origin = pathinfo($file->getClientOriginalName(), PATHINFO_BASENAME);
+        // $heberg = public_path('/icone/SousClasse') . '/' . $origin;
+        // $file->save($heberg);
+        // $sousclasse->icone = $heberg;
+
+
+        // Fin du code partagé adapté 
         $ok = $sousclasse->save();
         if ($ok) {
             return response()->json(["status" => 1, "message" => "Sous classe ajouté dans la bd"], 201);
