@@ -31,9 +31,19 @@ class SousracesController extends Controller
         $sousrace->races_id = $request->races_id;
         $sousrace->nom = $request->nom;
         $sousrace->description = $request->description;
-        $sousrace->icone = $request->icone;
         $idSousRace = Sousraces::count() + 1;
         $sousrace->id = $idSousRace;
+
+        // code partagé par Clément, pas mal adapté pour ma situation par ce qu'en fait c'est différent
+
+        $file = $request->file('image');
+        $origin = pathinfo($file->getClientOriginalName(), PATHINFO_BASENAME);
+        $chemin = '/icone/SousRace/';
+        $heberg = public_path($chemin);
+        $file->move($heberg, $origin);
+        $sousrace->icone = url($chemin . $origin);
+
+        // Fin du code partagé adapté 
 
         $ok = $sousrace->save();
         if ($ok) {

@@ -32,9 +32,19 @@ class OriginesController extends Controller
         $origine = new Origines;
         $origine->nom = $request->nom;
         $origine->description = $request->description;
-        $origine->icone = $request->icone;
         $idOrigine = Origines::count() + 1;
         $origine->id = $idOrigine;
+
+        // code partagé par Clément, pas mal adapté pour ma situation par ce qu'en fait c'est différent
+
+        $file = $request->file('image');
+        $origin = pathinfo($file->getClientOriginalName(), PATHINFO_BASENAME);
+        $chemin = '/icone/Origine/';
+        $heberg = public_path($chemin);
+        $file->move($heberg, $origin);
+        $origine->icone = url($chemin . $origin);
+
+        // Fin du code partagé adapté 
 
         $ok = $origine->save();
         if ($ok) {

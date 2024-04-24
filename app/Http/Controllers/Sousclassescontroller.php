@@ -34,7 +34,7 @@ class SousclassesController extends Controller
         $idSousClasse = Sousclasses::count() + 1;
         $sousclasse->id = $idSousClasse;
 
-        // code partagé par Clément, adapté pour ma situation
+        // code partagé par Clément, pas mal adapté pour ma situation par ce qu'en fait c'est différent
 
         $file = $request->file('image');
         $origin = pathinfo($file->getClientOriginalName(), PATHINFO_BASENAME);
@@ -43,8 +43,8 @@ class SousclassesController extends Controller
         $file->move($heberg, $origin);
         $sousclasse->icone = url($chemin . $origin);
 
-
         // Fin du code partagé adapté 
+        
         $ok = $sousclasse->save();
         if ($ok) {
             return response()->json(["status" => 1, "message" => "Sous classe ajouté dans la bd"], 201);

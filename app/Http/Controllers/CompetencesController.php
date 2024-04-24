@@ -29,11 +29,21 @@ class CompetencesController extends Controller
         $competence = new Competences;
         $competence->nom = $request->nom;
         $competence->description = $request->description;
-        $competence->icone = $request->icone;
         $competence->action = $request->action;
         $idCompetence = Competences::count() + 1;
         $competence->id = $idCompetence;
 
+        // code partagé par Clément, pas mal adapté pour ma situation par ce qu'en fait c'est différent
+
+        $file = $request->file('image');
+        $origin = pathinfo($file->getClientOriginalName(), PATHINFO_BASENAME);
+        $chemin = '/icone/Competence/';
+        $heberg = public_path($chemin);
+        $file->move($heberg, $origin);
+        $competence->icone = url($chemin . $origin);
+
+        // Fin du code partagé adapté 
+        
         $ok = $competence->save();
         if ($request->sousRaces) {
             $sousRaces = $request->sousRaces;

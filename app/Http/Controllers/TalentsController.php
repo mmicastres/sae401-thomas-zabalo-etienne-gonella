@@ -32,9 +32,19 @@ class TalentsController extends Controller
         $talent->statistiques_id = $request->statistiques_id;
         $talent->nom = $request->nom;
         $talent->description = $request->description;
-        $talent->icone = $request->icone;
         $idTalent = Talents::count() + 1;
         $talent->id = $idTalent;
+
+        // code partagé par Clément, pas mal adapté pour ma situation par ce qu'en fait c'est différent
+
+        $file = $request->file('image');
+        $origin = pathinfo($file->getClientOriginalName(), PATHINFO_BASENAME);
+        $chemin = '/icone/Talent/';
+        $heberg = public_path($chemin);
+        $file->move($heberg, $origin);
+        $talent->icone = url($chemin . $origin);
+
+        // Fin du code partagé adapté 
 
         $ok = $talent->save();
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Statistiques;
+
 class StatistiquesController extends Controller
 {
     public function listStatistiques(Request $request)
@@ -30,9 +31,19 @@ class StatistiquesController extends Controller
         $statistique = new Statistiques;
         $statistique->nom = $request->nom;
         $statistique->description = $request->description;
-        $statistique->icone = $request->icone;
         $idStatistique = Statistiques::count() + 1;
         $statistique->id = $idStatistique;
+
+        // code partagé par Clément, pas mal adapté pour ma situation par ce qu'en fait c'est différent
+
+        $file = $request->file('image');
+        $origin = pathinfo($file->getClientOriginalName(), PATHINFO_BASENAME);
+        $chemin = '/icone/Statistique/';
+        $heberg = public_path($chemin);
+        $file->move($heberg, $origin);
+        $statistique->icone = url($chemin . $origin);
+
+        // Fin du code partagé adapté 
 
         $ok = $statistique->save();
         if ($ok) {

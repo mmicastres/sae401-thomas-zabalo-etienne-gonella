@@ -21,7 +21,7 @@ class ClassesController extends Controller
 
     public function detailsClasse(Request $request)
     {
-        $classe = Classes::where("id", "=", $request->id)->with('sousclasses','statistiques')->get();
+        $classe = Classes::where("id", "=", $request->id)->with('sousclasses', 'statistiques')->get();
         return response()->json($classe[0], 200);
     }
 
@@ -30,17 +30,28 @@ class ClassesController extends Controller
         $classe = new Classes;
         $classe->nom = $request->nom;
         $classe->description = $request->description;
-        $classe->icone = $request->icone;
         $idClasse = Classes::count() + 1;
         $classe->id = $idClasse;
+
+        // code partagé par Clément, pas mal adapté pour ma situation par ce qu'en fait c'est différent
+
+        $file = $request->file('image');
+        $origin = pathinfo($file->getClientOriginalName(), PATHINFO_BASENAME);
+        $chemin = '/icone/Classe/';
+        $heberg = public_path($chemin);
+        $file->move($heberg, $origin);
+        $classe->icone = url($chemin . $origin);
+
+        // Fin du code partagé adapté 
+
         $ok = $classe->save();
 
         $statistiques = $request->statistiques;
-            foreach ($statistiques as $stat) {
-                $statId = $stat['id'];
-                $valeur = $stat['valeur'];
-                $classe->statistiques()->attach($statId, ['valeur' => $valeur]);
-            }
+        foreach ($statistiques as $stat) {
+            $statId = $stat['id'];
+            $valeur = $stat['valeur'];
+            $classe->statistiques()->attach($statId, ['valeur' => $valeur]);
+        }
         if ($ok) {
             return response()->json(["status" => 1, "message" => "Classe ajouté dans la bd"], 201);
         } else {

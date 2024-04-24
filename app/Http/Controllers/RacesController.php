@@ -30,9 +30,19 @@ class RacesController extends Controller
         $race = new Races;
         $race->nom = $request->nom;
         $race->description = $request->description;
-        $race->icone = $request->icone;
         $idRace = Races::count() + 1;
         $race->id = $idRace;
+
+        // code partagé par Clément, pas mal adapté pour ma situation par ce qu'en fait c'est différent
+
+        $file = $request->file('image');
+        $origin = pathinfo($file->getClientOriginalName(), PATHINFO_BASENAME);
+        $chemin = '/icone/Race/';
+        $heberg = public_path($chemin);
+        $file->move($heberg, $origin);
+        $race->icone = url($chemin . $origin);
+
+        // Fin du code partagé adapté 
 
         $ok = $race->save();
         if ($ok) {

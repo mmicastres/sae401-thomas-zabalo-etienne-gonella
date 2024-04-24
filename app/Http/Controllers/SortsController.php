@@ -32,10 +32,21 @@ class SortsController extends Controller
         $sort->nom = $request->nom;
         $sort->niveau = $request->niveau;
         $sort->description = $request->description;
-        $sort->icone = $request->icone;
         $sort->action = $request->action;
         $idSort = Sorts::count() + 1;
         $sort->id = $idSort;
+
+        // code partagé par Clément, pas mal adapté pour ma situation par ce qu'en fait c'est différent
+
+        $file = $request->file('image');
+        $origin = pathinfo($file->getClientOriginalName(), PATHINFO_BASENAME);
+        $chemin = '/icone/Sort/';
+        $heberg = public_path($chemin);
+        $file->move($heberg, $origin);
+        $sort->icone = url($chemin . $origin);
+
+        // Fin du code partagé adapté 
+
         $ok = $sort->save();
 
         if ($request->sousRaces) {
