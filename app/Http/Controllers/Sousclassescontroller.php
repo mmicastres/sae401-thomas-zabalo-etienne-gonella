@@ -38,9 +38,10 @@ class SousclassesController extends Controller
 
         $file = $request->file('image');
         $origin = pathinfo($file->getClientOriginalName(), PATHINFO_BASENAME);
-        $heberg = public_path('/icone/SousClasse/'). $origin;
-        $file->move($heberg);
-        $sousclasse->icone = $heberg;
+        $chemin = '/icone/SousClasse/';
+        $heberg = public_path($chemin);
+        $file->move($heberg, $origin);
+        $sousclasse->icone = url($chemin . $origin);
 
 
         // Fin du code partagé adapté 
