@@ -20,7 +20,7 @@ class PersonnagesController extends Controller
         }
     }
 
-    public function detailsPersonnage(Request $request, $id)
+    public function detailsPersonnage(Request $request)
     {
         $personnage = Personnages::where("id", "=", $request->id)->with('origines', 'sousclasses', 'sousclasses.classes', 'sousraces', 'sousraces.races', 'user', 'competences', 'sorts','talents')->get();
         return response()->json($personnage[0], 200);
