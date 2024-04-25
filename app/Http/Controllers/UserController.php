@@ -182,14 +182,16 @@ class UserController extends Controller
     public function updateIconeUser(Request $request, $id)
     {
         $user = User::find($id);
-        $chemin = '/home/zabalo/www/sae401/public/icone/User/';
-        $icone = basename($user->icone);
-        $relatif = $chemin . $icone;
 
-        if (file_exists($relatif)) {
-            unlink($relatif);
+        if ($user->icone) {
+            $chemin = '/home/zabalo/www/sae401/public/icone/User/';
+            $icone = basename($user->icone);
+            $relatif = $chemin . $icone;
+
+            if (file_exists($relatif)) {
+                unlink($relatif);
+            }
         }
-
         // code partagé par Clément, pas mal adapté pour ma situation par ce qu'en fait c'est différent
 
         $file = $request->file('image');
@@ -199,7 +201,7 @@ class UserController extends Controller
         $user->icone = url($chemin . $origin);
         $ok = $user->save();
         if ($ok) {
-            return response()->json(["status" => 1, "message" => "icone modifié"], 201);
+            return response()->json(["status" => 1, "message" => "user modifié"], 201);
         } else {
             return response()->json(["status" => 0, "message" => "problème lors de la modif"], 400);
         }
