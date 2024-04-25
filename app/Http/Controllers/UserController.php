@@ -181,30 +181,35 @@ class UserController extends Controller
 
     public function updateIconeUser(Request $request, $id)
     {
-        $user = User::find($id);
-        if ($user->icone) {
-            $chemin = '/home/zabalo/www/sae401/public/icone/User/';
-            $icone = basename($user->icone);
-            $relatif = $chemin . $icone;
+        $user = $request->user();
+        if ($user->administrateur || $user->id == $request->id) {
+            $modifUser = User::find($id);
+            if ($modifUser->icone) {
+                $chemin = '/home/zabalo/www/sae401/public/icone/User/';
+                $icone = basename($user->icone);
+                $relatif = $chemin . $icone;
 
-            if (file_exists($relatif)) {
-                unlink($relatif);
+                if (file_exists($relatif)) {
+                    unlink($relatif);
+                }
             }
-        }
-        // code partagé par Clément, pas mal adapté pour ma situation par ce qu'en fait c'est différent
+            // code partagé par Clément, pas mal adapté pour ma situation par ce qu'en fait c'est différent
 
-        $file = $request->file('image');
-        $origin = pathinfo($file->getClientOriginalName(), PATHINFO_BASENAME);
-        $chemin = '/icone/User/';
-        $heberg = public_path($chemin);
-        $file->move($heberg, $origin);
-        $user->icone = url($chemin . $origin);
-        $ok = $user->save();
-        if ($ok) {
-            return response()->json(["status" => 1, "message" => "user modifié"], 201);
+            $file = $request->file('image');
+            $origin = pathinfo($file->getClientOriginalName(), PATHINFO_BASENAME);
+            $chemin = '/icone/User/';
+            $heberg = public_path($chemin);
+            $file->move($heberg, $origin);
+            $modifUser->icone = url($chemin . $origin);
+            $ok = $modifUser->save();
+            if ($ok) {
+                return response()->json(["status" => 1, "message" => "user modifié"], 201);
+            } else {
+                return response()->json(["status" => 0, "message" => "problème lors de la modif"], 400);
+            }
+            // Fin du code partagé adapté 
         } else {
-            return response()->json(["status" => 0, "message" => "problème lors de la modif"], 400);
+            return response()->json(["status" => 0, "message" => "Ce n'est pas votre compte/vous n'êtes pas admin"], 400);
         }
-        // Fin du code partagé adapté 
     }
 }
