@@ -71,7 +71,9 @@ class StatistiquesController extends Controller
         if ($statistique) {
             $statistique->nom = $request->nom;
             $statistique->description = $request->description;
-            $statistique->icone = $request->icone;
+            if ($request->icone) {
+                $statistique->icone = $request->icone;
+            }
             $statistique->save();
             return response()->json(["status" => 1, "message" => "statistique modifié"], 201);
         } else {

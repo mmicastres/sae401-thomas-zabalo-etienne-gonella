@@ -88,7 +88,9 @@ class TalentsController extends Controller
             $talent->statistiques_id = $request->statistiques_id;
             $talent->nom = $request->nom;
             $talent->description = $request->description;
-            $talent->icone = $request->icone;
+            if ($request->icone) {
+                $talent->icone = $request->icone;
+            }
             $talent->save();
 
 

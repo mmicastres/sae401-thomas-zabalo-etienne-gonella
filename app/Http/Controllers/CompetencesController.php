@@ -87,7 +87,9 @@ class CompetencesController extends Controller
         if ($competence) {
             $competence->nom = $request->nom;
             $competence->description = $request->description;
-            $competence->icone = $request->icone;
+            if ($request->icone) {
+                $competence->icone = $request->icone;
+            }
             $competence->action = $request->action;
             $competence->save();
             if ($request->sousRaces) {

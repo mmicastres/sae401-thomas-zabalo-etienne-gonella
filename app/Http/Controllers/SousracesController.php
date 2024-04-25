@@ -71,7 +71,9 @@ class SousracesController extends Controller
         if ($sousrace) {
             $sousrace->nom = $request->nom;
             $sousrace->description = $request->description;
-            $sousrace->icone = $request->icone;
+            if ($request->icone) {
+                $sousrace->icone = $request->icone;
+            }
             $sousrace->save();
             return response()->json(["status" => 1, "message" => "sous classe modifiée"], 201);
         } else {

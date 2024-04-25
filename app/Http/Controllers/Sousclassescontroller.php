@@ -44,7 +44,7 @@ class SousclassesController extends Controller
         $sousclasse->icone = url($chemin . $origin);
 
         // Fin du code partagé adapté 
-        
+
         $ok = $sousclasse->save();
         if ($ok) {
             return response()->json(["status" => 1, "message" => "Sous classe ajouté dans la bd"], 201);
@@ -71,7 +71,9 @@ class SousclassesController extends Controller
         if ($sousclasse) {
             $sousclasse->nom = $request->nom;
             $sousclasse->description = $request->description;
-            $sousclasse->icone = $request->icone;
+            if ($request->icone) {
+                $sousclasse->icone = $request->icone;
+            }
             $sousclasse->save();
             return response()->json(["status" => 1, "message" => "sous classe modifiée"], 201);
         } else {

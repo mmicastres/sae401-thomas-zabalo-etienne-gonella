@@ -77,7 +77,9 @@ class ClassesController extends Controller
         if ($classe) {
             $classe->nom = $request->nom;
             $classe->description = $request->description;
-            $classe->icone = $request->icone;
+            if ($request->icone) {
+                $classe->icone = $request->icone;
+            }
             $classe->save();
 
             $statistiques = $request->statistiques;

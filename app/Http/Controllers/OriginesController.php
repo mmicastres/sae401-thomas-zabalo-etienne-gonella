@@ -72,7 +72,9 @@ class OriginesController extends Controller
         if ($origine) {
             $origine->nom = $request->nom;
             $origine->description = $request->description;
-            $origine->icone = $request->icone;
+            if ($request->icone) {
+                $origine->icone = $request->icone;
+            }
             $origine->save();
             return response()->json(["status" => 1, "message" => "origine modifié"], 201);
         } else {

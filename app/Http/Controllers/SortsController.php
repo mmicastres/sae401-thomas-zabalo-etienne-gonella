@@ -94,7 +94,9 @@ class SortsController extends Controller
             $sort->nom = $request->nom;
             $sort->niveau = $request->niveau;
             $sort->description = $request->description;
-            $sort->icone = $request->icone;
+            if ($request->icone) {
+                $sort->icone = $request->icone;
+            }
             $sort->action = $request->action;
             $sort->save();
 
