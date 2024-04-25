@@ -196,7 +196,8 @@ class UserController extends Controller
 
         $file = $request->file('image');
         $origin = pathinfo($file->getClientOriginalName(), PATHINFO_BASENAME);
-        $heberg = public_path('/icone/User/');
+        $chemin = '/icone/User/';
+        $heberg = public_path($chemin);
         $file->move($heberg, $origin);
         $user->icone = url($chemin . $origin);
         $ok = $user->save();
