@@ -78,9 +78,9 @@ class PersonnagesController extends Controller
     {
         $personnage = Personnages::find($id);
         if ($personnage) {
-            $personnage->race_id = $request->race_id;
+            $personnage->sousrace_id = $request->sousrace_id;
             $personnage->origine_id = $request->origine_id;
-            $personnage->classe_id = $request->classe_id;
+            $personnage->sousclasse_id = $request->sousclasse_id;
             $personnage->nom = $request->nom;
             $personnage->save();
 
