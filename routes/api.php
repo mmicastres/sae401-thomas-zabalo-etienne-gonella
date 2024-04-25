@@ -79,9 +79,9 @@ Route::middleware('auth:sanctum')->delete('/sousclasses/{id}', [SousclassesContr
 
 Route::get('/races', [RacesController::class, 'listRaces']);
 Route::get('/races/{id}', [RacesController::class, 'detailsRace']);
-Route::middleware(['auth:sanctum', 'abilities:administrateur'])->post('/races', [RacesController::class, 'addRace']);
-Route::middleware(['auth:sanctum', 'abilities:administrateur'])->put('races/{id}', [RacesController::class, 'updateRace']);
-Route::middleware(['auth:sanctum', 'abilities:administrateur'])->delete('/races/{id}', [RacesController::class, 'deleteRace']);
+Route::middleware('auth:sanctum')->post('/races', [RacesController::class, 'addRace']);
+Route::middleware('auth:sanctum')->put('races/{id}', [RacesController::class, 'updateRace']);
+Route::middleware('auth:sanctum')->delete('/races/{id}', [RacesController::class, 'deleteRace']);
 
 // Les routes liées aux Sousraces 
 
