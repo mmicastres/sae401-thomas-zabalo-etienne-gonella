@@ -160,8 +160,9 @@ class UserController extends Controller
             if ($modifUser) {
                 $modifUser->name = $request->name;
                 $modifUser->email = $request->email;
-                $modifUser->password = $request->password;
-
+                if ($request->password) {
+                    $modifUser->password = $request->password;
+                }
                 $ok = $modifUser->save();
                 if ($ok) {
                     return response()->json(["status" => 1, "message" => "user modifié"], 201);
