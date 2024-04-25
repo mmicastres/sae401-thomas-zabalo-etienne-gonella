@@ -182,7 +182,6 @@ class UserController extends Controller
     public function updateIconeUser(Request $request, $id)
     {
         $user = User::find($id);
-        return response()->json($user->icone);
         if ($user->icone) {
             $chemin = '/home/zabalo/www/sae401/public/icone/User/';
             $icone = basename($user->icone);
