@@ -70,7 +70,9 @@ class RacesController extends Controller
         if ($race) {
             $race->nom = $request->nom;
             $race->description = $request->description;
-            $race->icone = $request->icone;
+            if ($request->icone) {
+                $race->icone = $request->icone;
+            }
             $race->save();
             return response()->json(["status" => 1, "message" => "race modifié"], 201);
         } else {
