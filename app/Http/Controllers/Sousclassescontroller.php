@@ -58,6 +58,13 @@ class SousclassesController extends Controller
     {
         $sousclasse = Sousclasses::find($id);
         if ($sousclasse) {
+            $chemin = '/home/zabalo/www/sae401/public/icone/SousClasse/';
+            $icone = basename($sousclasse->icone);
+            $relatif = $chemin . $icone;
+
+            if (file_exists($relatif)) {
+                unlink($relatif);
+            }
             $sousclasse->delete();
             return response()->json(["status" => 1, "message" => "Sous classe supprimée de la bd"], 201);
         } else {

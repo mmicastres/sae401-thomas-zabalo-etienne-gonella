@@ -57,6 +57,14 @@ class RacesController extends Controller
     {
         $race = Races::find($id);
         if ($race) {
+            $chemin = '/home/zabalo/www/sae401/public/icone/Race/';
+            $icone = basename($race->icone);
+            $relatif = $chemin . $icone;
+
+            if (file_exists($relatif)) {
+                unlink($relatif);
+            }
+
             $race->delete();
             return response()->json(["status" => 1, "message" => "Race supprimé de la bd"], 201);
         } else {
