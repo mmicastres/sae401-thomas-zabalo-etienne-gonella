@@ -80,4 +80,38 @@ class SousclassesController extends Controller
             return response()->json(["status" => 0, "message" => "Cette Sous classe n'existe pas"], 400);
         }
     }
+
+    public function updateIconeSousClasse(Request $request, $id)
+    {
+        $user = $request->user();
+        if ($user->administrateur) {
+            $sousclasse = SousClasses::find($id);
+            if ($sousclasse->icone) {
+                $chemin = '/home/zabalo/www/sae401/public/icone/SousClasse/';
+                $icone = basename($user->icone);
+                $relatif = $chemin . $icone;
+
+                if (file_exists($relatif)) {
+                    unlink($relatif);
+                }
+            }
+            // code partagé par Clément, pas mal adapté pour ma situation par ce qu'en fait c'est différent
+
+            $file = $request->file('image');
+            $origin = pathinfo($file->getClientOriginalName(), PATHINFO_BASENAME);
+            $chemin = '/icone/SousClasse/';
+            $heberg = public_path($chemin);
+            $file->move($heberg, $origin);
+            $sousclasse->icone = url($chemin . $origin);
+            $ok = $sousclasse->save();
+            if ($ok) {
+                return response()->json(["status" => 1, "message" => "race modifié"], 201);
+            } else {
+                return response()->json(["status" => 0, "message" => "problème lors de la modif"], 400);
+            }
+            // Fin du code partagé adapté 
+        } else {
+            return response()->json(["status" => 0, "message" => "Vous n'êtes pas admin"], 400);
+        }
+    }
 }

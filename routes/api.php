@@ -74,6 +74,7 @@ Route::get('/sousclasses', [SousclassesController::class, 'listSousclasses']);
 Route::get('/sousclasses/{id}', [SousclassesController::class, 'detailsSousClasse']);
 Route::middleware('auth:sanctum')->post('/sousclasses', [SousclassesController::class, 'addSousClasse']);
 Route::middleware('auth:sanctum')->put('/sousclasses/{id}', [SousclassesController::class, 'updateSousClasse']);
+Route::middleware('auth:sanctum')->post('/sousclasses/{id}/icone', [SousclassesController::class, 'updateIconeSousClasse']);
 Route::middleware('auth:sanctum')->delete('/sousclasses/{id}', [SousclassesController::class, 'deleteSousClasse']);
 
 // Les routes liées aux Races
@@ -82,6 +83,7 @@ Route::get('/races', [RacesController::class, 'listRaces']);
 Route::get('/races/{id}', [RacesController::class, 'detailsRace']);
 Route::middleware('auth:sanctum')->post('/races', [RacesController::class, 'addRace']);
 Route::middleware('auth:sanctum')->put('races/{id}', [RacesController::class, 'updateRace']);
+Route::middleware('auth:sanctum')->post('/races/{id}/icone', [RacesController::class, 'updateIconeRace']);
 Route::middleware('auth:sanctum')->delete('/races/{id}', [RacesController::class, 'deleteRace']);
 
 // Les routes liées aux Sousraces 

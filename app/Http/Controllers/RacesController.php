@@ -79,4 +79,38 @@ class RacesController extends Controller
             return response()->json(["status" => 0, "message" => "Cette race n'existe pas"], 400);
         }
     }
+
+    public function updateIconeRace(Request $request, $id)
+    {
+        $user = $request->user();
+        if ($user->administrateur) {
+            $race = Races::find($id);
+            if ($race->icone) {
+                $chemin = '/home/zabalo/www/sae401/public/icone/Race/';
+                $icone = basename($user->icone);
+                $relatif = $chemin . $icone;
+
+                if (file_exists($relatif)) {
+                    unlink($relatif);
+                }
+            }
+            // code partagé par Clément, pas mal adapté pour ma situation par ce qu'en fait c'est différent
+
+            $file = $request->file('image');
+            $origin = pathinfo($file->getClientOriginalName(), PATHINFO_BASENAME);
+            $chemin = '/icone/Race/';
+            $heberg = public_path($chemin);
+            $file->move($heberg, $origin);
+            $race->icone = url($chemin . $origin);
+            $ok = $race->save();
+            if ($ok) {
+                return response()->json(["status" => 1, "message" => "race modifié"], 201);
+            } else {
+                return response()->json(["status" => 0, "message" => "problème lors de la modif"], 400);
+            }
+            // Fin du code partagé adapté 
+        } else {
+            return response()->json(["status" => 0, "message" => "Vous n'êtes pas admin"], 400);
+        }
+    }
 }
