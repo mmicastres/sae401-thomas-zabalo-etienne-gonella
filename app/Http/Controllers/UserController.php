@@ -97,7 +97,7 @@ class UserController extends Controller
         }
     }
 
-    public function addUser(LoginRequest $request)
+    public function addUser(Request $request)
     {
         $verif = User::where("email", "=", $request->email)->get();
         if ($verif->isNotEmpty()) {
@@ -134,6 +134,15 @@ class UserController extends Controller
     {
         $user = User::find($id);
         if ($user) {
+            $chemin = '/home/zabalo/www/sae401/public/icone/User/';
+            $icone = basename($user->icone);
+            $relatif = $chemin . $icone;
+
+            if (file_exists($relatif)) {
+                unlink($relatif);
+            }
+
+            $user->tokens()->delete();
             $user->delete();
             return response()->json(["status" => 1, "message" => "User supprimé de la bd"], 201);
         } else {
@@ -143,15 +152,22 @@ class UserController extends Controller
 
     public function updateUser(Request $request, $id)
     {
+
         $user = $request->user();
         if ($user->administrateur || $user->id == $request->id) {
             $modifUser = User::find($id);
+
             if ($modifUser) {
                 $modifUser->name = $request->name;
                 $modifUser->email = $request->email;
                 $modifUser->password = $request->password;
-                $modifUser->save();
-                return response()->json(["status" => 1, "message" => "user modifié"], 201);
+
+                $ok = $modifUser->save();
+                if ($ok) {
+                    return response()->json(["status" => 1, "message" => "user modifié"], 201);
+                } else {
+                    return response()->json(["status" => 0, "message" => "problème lors de la modif"], 400);
+                }
             } else {
                 return response()->json(["status" => 0, "message" => "Ce user n'existe pas"], 400);
             }
