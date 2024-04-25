@@ -48,6 +48,7 @@ Route::middleware(['auth:sanctum', 'abilities:administrateur'])->get('/users', [
 Route::middleware('auth:sanctum')->get('/users/{id}', [UserController::class, 'detailsUser']);
 Route::post('/users', [UserController::class, 'addUser']);
 Route::middleware('auth:sanctum')->put('/users/{id}', [UserController::class, 'updateUser']);
+Route::middleware('auth:sanctum')->put('/users/{id}/icone', [UserController::class, 'updateIconeUser']);
 Route::middleware('auth:sanctum')->delete('/users/{id}', [UserController::class, 'deleteUser']);
 
 

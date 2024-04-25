@@ -178,4 +178,31 @@ class UserController extends Controller
             ], 401);
         }
     }
+
+    public function updateIconeUser(Request $request, $id)
+    {
+        $user = User::find($id);
+        $chemin = '/home/zabalo/www/sae401/public/icone/User/';
+        $icone = basename($user->icone);
+        $relatif = $chemin . $icone;
+
+        if (file_exists($relatif)) {
+            unlink($relatif);
+        }
+
+        // code partagé par Clément, pas mal adapté pour ma situation par ce qu'en fait c'est différent
+
+        $file = $request->file('image');
+        $origin = pathinfo($file->getClientOriginalName(), PATHINFO_BASENAME);
+        $heberg = public_path('/icone/User/');
+        $file->move($heberg, $origin);
+        $user->icone = url($chemin . $origin);
+        $ok = $user->save();
+        if ($ok) {
+            return response()->json(["status" => 1, "message" => "icone modifié"], 201);
+        } else {
+            return response()->json(["status" => 0, "message" => "problème lors de la modif"], 400);
+        }
+        // Fin du code partagé adapté 
+    }
 }
