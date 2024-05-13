@@ -1,3 +1,7 @@
+# Répository React et React Native
+https://github.com/Thomas-Zabalo/React
+https://github.com/Thomas-Zabalo/React-native
+
 # Dossier UX
 
 ## Membres du groupe
